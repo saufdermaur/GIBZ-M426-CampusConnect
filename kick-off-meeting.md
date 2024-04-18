@@ -98,6 +98,7 @@
 - **Lehrer/Schüler**: Die Noten anhand von Graphen interpretieren können.
 - **Lehrer**: Die Notenverteilung eines Faches anhand von Graphen interpretieren können.
 - **Schüler**: Notendurchschnitte zu den jeweils belegten Fächern einsehen können.
+- **Schüler**: Verfügbare Noten bestätigen und sperren
 
 ## Kommunikation und Benachrichtigungen
 
