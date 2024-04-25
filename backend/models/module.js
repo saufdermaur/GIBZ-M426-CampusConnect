@@ -26,5 +26,14 @@ module.exports = (sequelize) => {
     updatedAt: 'updatedAt',
   });
 
+  Module.associate = function (models) {
+    Module.belongsToMany(models.Class, {
+      through: 'ClassModuleJunction',
+      as: 'classes',
+      foreignKey: 'ModuleID',
+      otherKey: 'ClassID',
+    });
+  }
+
   return Module;
 };

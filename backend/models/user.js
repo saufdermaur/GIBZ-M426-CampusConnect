@@ -48,5 +48,12 @@ module.exports = (sequelize) => {
     updatedAt: 'updatedAt',
   });
 
+  User.associate = function (models) {
+    User.belongsTo(models.Role, {
+      foreignKey: 'RoleID',
+      as: 'role'
+    });
+  };
+
   return User;
 };

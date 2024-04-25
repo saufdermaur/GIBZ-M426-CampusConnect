@@ -30,5 +30,12 @@ module.exports = (sequelize) => {
     updatedAt: 'updatedAt',
   });
 
+  Class.associate = function (models) {
+    Class.belongsTo(models.Department, {
+      foreignKey: 'DepartmentID',
+      as: 'department'
+    });
+  };
+
   return Class;
 };

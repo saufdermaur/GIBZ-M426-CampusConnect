@@ -34,5 +34,34 @@ module.exports = (sequelize) => {
     updatedAt: 'updatedAt',
   });
 
+  UserClassJunction.associate = function (models) {
+    UserClassJunction.belongsTo(models.User, {
+      foreignKey: 'UserID',
+      as: 'user'
+    });
+    UserClassJunction.belongsTo(models.Class, {
+      foreignKey: 'ClassID',
+      as: 'class'
+    });
+  };
+
+  User.associate = function (models) {
+    User.belongsToMany(models.Class, {
+      through: 'UserClassJunction',
+      foreignKey: 'UserID',
+      otherKey: 'ClassID',
+      as: 'classes'
+    });
+  };
+
+  Class.associate = function (models) {
+    Class.belongsToMany(models.User, {
+      through: 'UserClassJunction',
+      foreignKey: 'ClassID',
+      otherKey: 'UserID',
+      as: 'users'
+    });
+  };
+
   return UserClassJunction;
 };

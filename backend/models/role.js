@@ -22,5 +22,12 @@ module.exports = (sequelize) => {
     updatedAt: 'updatedAt',
   });
 
+  Role.associate = function (models) {
+    Role.hasMany(models.User, {
+      foreignKey: 'RoleID',
+      as: 'users'
+    });
+  };
+
   return Role;
 };

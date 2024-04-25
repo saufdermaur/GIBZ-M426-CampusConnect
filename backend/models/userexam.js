@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
     },
     ExamGrade: {
       type: DataTypes.REAL,
-      allowNull: true,
+      allowNull: false,
     },
     GradeConfirmed: {
       type: DataTypes.BOOLEAN,
@@ -37,15 +37,15 @@ module.exports = (sequelize) => {
     },
     Feedback: {
       type: DataTypes.STRING(512),
-      allowNull: true,
+      allowNull: false,
     },
     ReturnDate: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
     ConfirmDate: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
   }, {
     sequelize,
@@ -54,6 +54,35 @@ module.exports = (sequelize) => {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
   });
+
+  UserExam.associate = function (models) {
+    UserExam.belongsTo(models.User, {
+      foreignKey: 'UserID',
+      as: 'user'
+    });
+    UserExam.belongsTo(models.Exam, {
+      foreignKey: 'ExamID',
+      as: 'exam'
+    });
+  };
+
+  User.associate = function (models) {
+    User.belongsToMany(models.Exam, {
+      through: 'UserExam',
+      foreignKey: 'UserID',
+      otherKey: 'ExamID',
+      as: 'exams'
+    });
+  };
+
+  Exam.associate = function (models) {
+    Exam.belongsToMany(models.User, {
+      through: 'UserExam',
+      foreignKey: 'ExamID',
+      otherKey: 'UserID',
+      as: 'users'
+    });
+  };
 
   return UserExam;
 };

@@ -38,5 +38,16 @@ module.exports = (sequelize) => {
     updatedAt: 'updatedAt',
   });
 
+  Exam.associate = function (models) {
+    Exam.belongsTo(models.ClassModuleJunction, {
+      foreignKey: 'ClassModuleID',
+      as: 'classModule'
+    });
+    Exam.hasMany(models.UserExam, {
+      foreignKey: 'ExamID',
+      as: 'userExams'
+    });
+  };
+
   return Exam;
 };

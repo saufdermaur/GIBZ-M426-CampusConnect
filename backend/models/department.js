@@ -26,5 +26,12 @@ module.exports = (sequelize) => {
     updatedAt: 'updatedAt',
   });
 
+  Department.associate = function (models) {
+    Department.hasMany(models.Class, {
+      foreignKey: 'DepartmentID',
+      as: 'classes'
+    });
+  };
+
   return Department;
 };
