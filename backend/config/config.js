@@ -2,24 +2,36 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    host: process.env.DB_HOST,
-    dialect: 'postgres'
+    username: process.env.DEV_DB_USER,
+    password: process.env.DEV_DB_PASS,
+    database: process.env.DEV_DB_NAME,
+    host: process.env.DEV_DB_HOST,
+    port: process.env.DEV_DB_PORT,
+    dialect: 'postgres',
+    dialectOptions: {
+      password: process.env.DEV_DB_PASS && process.env.DEV_DB_PASS.toString()
+    }
   },
   test: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    host: process.env.DB_HOST,
-    dialect: 'postgres'
+    username: process.env.TEST_DB_USER,
+    password: process.env.TEST_DB_PASS,
+    database: process.env.TEST_DB_NAME,
+    host: process.env.TEST_DB_HOST,
+    port: process.env.TEST_DB_PORT,
+    dialect: 'postgres',
+    dialectOptions: {
+      password: process.env.TEST_DB_PASS && process.env.TEST_DB_PASS.toString()
+    }
   },
   production: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    host: process.env.DB_HOST,
+    username: process.env.PROD_DB_USER,
+    password: process.env.PROD_DB_PASS,
+    database: process.env.PROD_DB_NAME,
+    host: process.env.PROD_DB_HOST,
+    port: process.env.PROD_DB_PORT,
     dialect: 'postgres',
+    dialectOptions: {
+      password: process.env.PROD_DB_PASS && process.env.PROD_DB_PASS.toString()
+    }
   }
 };
