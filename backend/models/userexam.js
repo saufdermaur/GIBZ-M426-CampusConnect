@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
     },
     ConfirmDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
   }, {
     sequelize,
