@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     Name: {
-      type: DataTypes.STRING(32),
+      type: DataTypes.ENUM('student', 'teacher', 'admin'),
       allowNull: false,
     },
   }, {

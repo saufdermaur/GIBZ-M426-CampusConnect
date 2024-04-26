@@ -6,7 +6,6 @@ const PORT = 3000;
 app.use(cors());
 
 app.get('/', cors(), (req, res) => {
-    console.log('backend endpoint triggered');
     res.send('Hello World!');
 });
 
