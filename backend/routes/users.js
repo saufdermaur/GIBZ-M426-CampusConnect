@@ -1,5 +1,5 @@
 const express = require('express');
-const { isAdmin, isTeacher } = require('../middleware/roleChecks');
+const { isAdmin, isTeacher, canCreateUser } = require('../middleware/roleChecks');
 const { verifyToken } = require('../middleware/auth');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
@@ -51,7 +51,7 @@ router.post('/change-password', verifyToken, async (req, res) => {
     }
 });
 
-router.post('/create-user', [verifyToken, isAdmin], async (req, res) => {
+router.post('/create-user', [verifyToken, canCreateUser], async (req, res) => {
     const { FirstName, LastName, Email, RoleID, PasswordHash } = req.body;
     try {
         const newUser = await User.create({
