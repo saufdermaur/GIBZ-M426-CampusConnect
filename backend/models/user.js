@@ -3,6 +3,9 @@ const { Model, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   class User extends Model { }
 
+  const bcrypt = require('bcrypt');
+  const saltRounds = 10;
+
   User.init({
     UserID: {
       type: DataTypes.UUID,
@@ -41,6 +44,18 @@ module.exports = (sequelize) => {
       defaultValue: true,
     },
   }, {
+    hooks: {
+      beforeCreate: async (user) => {
+        const hash = await bcrypt.hash(user.PasswordHash, saltRounds);
+        user.PasswordHash = hash;
+      },
+      beforeUpdate: async (user) => {
+        if (user.changed('PasswordHash')) {
+          const hash = await bcrypt.hash(user.PasswordHash, saltRounds);
+          user.PasswordHash = hash;
+        }
+      }
+    },
     sequelize,
     modelName: 'User',
     timestamps: true,
@@ -49,9 +64,15 @@ module.exports = (sequelize) => {
   });
 
   User.associate = function (models) {
-    User.belongsTo(models.Role, {
+    this.belongsTo(models.Role, {
       foreignKey: 'RoleID',
       as: 'role'
+    });
+    this.belongsToMany(models.Class, {
+      through: 'UserClassJunction',
+      foreignKey: 'UserID',
+      otherKey: 'ClassID',
+      as: 'classes'
     });
   };
 

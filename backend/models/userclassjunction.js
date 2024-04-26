@@ -35,31 +35,13 @@ module.exports = (sequelize) => {
   });
 
   UserClassJunction.associate = function (models) {
-    UserClassJunction.belongsTo(models.User, {
+    this.belongsTo(models.User, {
       foreignKey: 'UserID',
       as: 'user'
     });
-    UserClassJunction.belongsTo(models.Class, {
+    this.belongsTo(models.Class, {
       foreignKey: 'ClassID',
       as: 'class'
-    });
-  };
-
-  User.associate = function (models) {
-    User.belongsToMany(models.Class, {
-      through: 'UserClassJunction',
-      foreignKey: 'UserID',
-      otherKey: 'ClassID',
-      as: 'classes'
-    });
-  };
-
-  Class.associate = function (models) {
-    Class.belongsToMany(models.User, {
-      through: 'UserClassJunction',
-      foreignKey: 'ClassID',
-      otherKey: 'UserID',
-      as: 'users'
     });
   };
 

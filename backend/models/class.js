@@ -31,9 +31,21 @@ module.exports = (sequelize) => {
   });
 
   Class.associate = function (models) {
-    Class.belongsTo(models.Department, {
+    this.belongsTo(models.Department, {
       foreignKey: 'DepartmentID',
       as: 'department'
+    });
+    this.belongsToMany(models.Module, {
+      through: 'ClassModuleJunction',
+      foreignKey: 'ClassID',
+      otherKey: 'ModuleID',
+      as: 'modules'
+    });
+    this.belongsToMany(models.User, {
+      through: 'UserClassJunction',
+      foreignKey: 'ClassID',
+      otherKey: 'UserID',
+      as: 'users'
     });
   };
 

@@ -39,13 +39,19 @@ module.exports = (sequelize) => {
   });
 
   Exam.associate = function (models) {
-    Exam.belongsTo(models.ClassModuleJunction, {
+    this.belongsTo(models.ClassModuleJunction, {
       foreignKey: 'ClassModuleID',
       as: 'classModule'
     });
-    Exam.hasMany(models.UserExam, {
+    this.hasMany(models.UserExam, {
       foreignKey: 'ExamID',
       as: 'userExams'
+    });
+    this.belongsToMany(models.User, {
+      through: "UserExam",
+      foreignKey: 'ExamID',
+      otherKey: 'UserID',
+      as: 'users'
     });
   };
 
