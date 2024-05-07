@@ -1,21 +1,30 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Modules', {
-      ModuleID: {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Accounts', {
+      AccountID: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
       },
-      Name: {
-        type: Sequelize.STRING(64),
+      FirstName: {
         allowNull: false,
+        type: Sequelize.STRING(64)
       },
-      Description: {
-        type: Sequelize.STRING(1048),
+      LastName: {
         allowNull: false,
+        type: Sequelize.STRING(64)
+      },
+      Email: {
+        allowNull: false,
+        type: Sequelize.STRING(128),
+        unique: true
+      },
+      PasswordHash: {
+        allowNull: false,
+        type: Sequelize.STRING(512)
       },
       createdAt: {
         allowNull: false,
@@ -29,8 +38,8 @@ module.exports = {
       }
     });
   },
-
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Modules');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Accounts');
   }
 };
+

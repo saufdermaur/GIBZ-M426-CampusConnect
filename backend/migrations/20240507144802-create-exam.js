@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Exams', {
       ExamID: {
         allowNull: false,
@@ -9,25 +9,35 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
       },
-      ClassModuleID: {
-        type: Sequelize.UUID,
+      ModuleID: {
         allowNull: false,
+        type: Sequelize.UUID,
         references: {
-          model: 'ClassModuleJunctions',
-          key: 'ClassModuleID'
-        }
+          model: 'Modules',
+          key: 'ModuleID',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      Grade: {
+        allowNull: true,
+        type: Sequelize.REAL
+      },
+      Weight: {
+        allowNull: true,
+        type: Sequelize.REAL
+      },
+      ExamTitle: {
+        allowNull: false,
+        type: Sequelize.STRING(64)
+      },
+      Description: {
+        allowNull: true,
+        type: Sequelize.STRING(512)
       },
       ExamDate: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
-      ExamTitle: {
-        type: Sequelize.STRING(64),
-        allowNull: false,
-      },
-      Description: {
-        type: Sequelize.STRING(512),
-        allowNull: false,
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -41,8 +51,7 @@ module.exports = {
       }
     });
   },
-
-  down: async (queryInterface, Sequelize) => {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Exams');
   }
 };

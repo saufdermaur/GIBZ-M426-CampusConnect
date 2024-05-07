@@ -1,29 +1,31 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('UserClassJunctions', {
-      UserClassID: {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Modules', {
+      ModuleID: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
       },
-      ClassID: {
-        type: Sequelize.UUID,
+      AccountID: {
         allowNull: false,
+        type: Sequelize.UUID,
         references: {
-          model: 'Classes',
-          key: 'ClassID'
-        }
+          model: 'Accounts',
+          key: 'AccountID',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      UserID: {
-        type: Sequelize.UUID,
+      Name: {
         allowNull: false,
-        references: {
-          model: 'Users',
-          key: 'UserID'
-        }
+        type: Sequelize.STRING(64)
+      },
+      Description: {
+        allowNull: true,
+        type: Sequelize.STRING(512)
       },
       createdAt: {
         allowNull: false,
@@ -37,8 +39,7 @@ module.exports = {
       }
     });
   },
-
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('UserClassJunctions');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Modules');
   }
 };

@@ -3,14 +3,15 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const userRoutes = require('./routes/users');
+const accountRoutes = require('./routes/accounts');
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/users', userRoutes);
+app.use('/api/account', accountRoutes);
 
 app.get('/', cors(), (req, res) => {
+    res.status(200)
     res.send('Hello World!');
 });
 

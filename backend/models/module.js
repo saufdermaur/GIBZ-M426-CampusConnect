@@ -2,38 +2,41 @@ const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   class Module extends Model { }
-
   Module.init({
     ModuleID: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+      primaryKey: true,
+      allowNull: false
+    },
+    AccountID: {
+      type: DataTypes.UUID,
+      allowNull: false
     },
     Name: {
       type: DataTypes.STRING(64),
-      allowNull: false,
+      allowNull: false
     },
     Description: {
-      type: DataTypes.STRING(1048),
-      allowNull: false,
-    },
+      type: DataTypes.STRING(512),
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'Module',
-    timestamps: true,
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
+    tableName: 'Modules'
   });
 
   Module.associate = function (models) {
-    this.belongsToMany(models.Class, {
-      through: 'ClassModuleJunction',
-      as: 'classes',
-      foreignKey: 'ModuleID',
-      otherKey: 'ClassID',
+    this.belongsTo(models.Account, {
+      foreignKey: 'AccountID',
+      as: 'account'
     });
-  }
+    this.hasMany(models.Exam, {
+      foreignKey: 'ModuleID',
+      as: 'exams'
+    });
+  };
 
   return Module;
 };

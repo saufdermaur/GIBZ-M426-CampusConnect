@@ -6,52 +6,44 @@ module.exports = (sequelize) => {
   Exam.init({
     ExamID: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+      primaryKey: true,
+      allowNull: false
     },
-    ClassModuleID: {
+    ModuleID: {
       type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: 'ClassModuleJunction',
-        key: 'ClassModuleID',
-      },
+      allowNull: false
     },
-    ExamDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
+    Grade: {
+      type: DataTypes.REAL,
+      allowNull: true
+    },
+    Weight: {
+      type: DataTypes.REAL,
+      allowNull: true
     },
     ExamTitle: {
       type: DataTypes.STRING(64),
-      allowNull: false,
+      allowNull: false
     },
     Description: {
       type: DataTypes.STRING(512),
-      allowNull: false,
+      allowNull: true
     },
+    ExamDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Exam',
-    timestamps: true,
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
+    tableName: 'Exams'
   });
 
   Exam.associate = function (models) {
-    this.belongsTo(models.ClassModuleJunction, {
-      foreignKey: 'ClassModuleID',
-      as: 'classModule'
-    });
-    this.hasMany(models.UserExam, {
-      foreignKey: 'ExamID',
-      as: 'userExams'
-    });
-    this.belongsToMany(models.User, {
-      through: "UserExam",
-      foreignKey: 'ExamID',
-      otherKey: 'UserID',
-      as: 'users'
+    this.belongsTo(models.Module, {
+      foreignKey: 'ModuleID',
+      as: 'module'
     });
   };
 

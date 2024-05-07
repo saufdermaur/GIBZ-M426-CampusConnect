@@ -39,6 +39,8 @@ DEV_DB_USER=postgres
 DEV_DB_PASS=postgres
 DEV_DB_NAME=campusconnect
 DEV_DB_PORT=5432
+
+JWT_SECRET=my-secret-jwt-key
 ```
 
 ## Initialize Database

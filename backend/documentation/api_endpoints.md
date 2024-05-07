@@ -32,51 +32,57 @@
 | **Error Response**| None                                          |
 | **Description**   | This endpoint provides a simple "Hello World!" message. It is used to demonstrate a basic GET request in the application and does not require any authentication or input parameters. Utilizes CORS to allow cross-origin requests. |
 
-## User Endpoints
+## Account Endpoints
 
-### Login Endpoint
+### Login
 
 | Aspect            | Details                                       |
 |-------------------|-----------------------------------------------|
-| **Route**         | `/api/users/login`                            |
+| **Route**         | `/api/account/login`                          |
 | **HTTP Method**   | POST                                          |
 | **Headers**       | `Content-Type`: application/json              |
-| **Query Parameters** | None                                        |
-| **Request Body**  | `{ "Email": "example@example.com", "PasswordHash": "your_password" }` |
-| **Success Response** | **Code**: 200 OK                           |
-|                   | **Content**: `{ "message": "Login successful", "token": "JWT_Token_here" }` |
-| **Error Response**| **Code**: 401 Unauthorized                    |
+| **Query Parameters** | None                                      |
+| **Request Body**  | `{ "email": "example@example.com", "password": "yourPassword" }` |
+| **Success Response** | **Code**: 200 OK                         |
+|                   | **Content**: `{ "message": "Login successful", "token": "jwtTokenHere" }` |
+| **Error Response**| **Code**: 401 Unauthorized                   |
 |                   | **Content**: `{ "error": "Invalid credentials" }` |
-|                   | **Code**: 403 Forbidden                       |
-|                   | **Content**: `{ "message": "Please reset your password", "forceReset": true }` |
-| **Description**   | This endpoint verifies user credentials and returns a JWT if successful. It requires users to change their password if it is their first login (initiated password). |
+|                   | **Code**: 404 Not Found                      |
+|                   | **Content**: `{ "error": "Account not found" }`|
+|                   | **Code**: 500 Internal Server Error          |
+|                   | **Content**: `{ "error": "Error message here" }` |
+| **Description**   | This endpoint authenticates a user by email and password, issuing a JWT upon successful authentication. |
 
-### Change Password Endpoint
+### Change Password
 
 | Aspect            | Details                                       |
 |-------------------|-----------------------------------------------|
-| **Route**         | `/api/users/change-password`                  |
+| **Route**         | `/api/account/change-password`                |
 | **HTTP Method**   | POST                                          |
-| **Headers**       | `Content-Type`: application/json, `Authorization`: Bearer Token |
-| **Query Parameters** | None                                        |
-| **Request Body**  | `{ "UserID": "user_uuid", "oldPassword": "old_password", "newPassword": "new_password" }` |
-| **Success Response** | **Code**: 200 OK                           |
+| **Headers**       | `Content-Type`: application/json              |
+| **Query Parameters** | None                                      |
+| **Request Body**  | `{ "accountId": "UUID", "oldPassword": "oldPass", "newPassword": "newPass" }` |
+| **Success Response** | **Code**: 200 OK                         |
 |                   | **Content**: `{ "message": "Password successfully updated" }` |
-| **Error Response**| **Code**: 401 Unauthorized                    |
+| **Error Response**| **Code**: 401 Unauthorized                   |
 |                   | **Content**: `{ "error": "Old password does not match" }` |
-| **Description**   | Allows users to change their password after validating their old password. It uses JWT for user authentication. |
+|                   | **Code**: 404 Not Found                      |
+|                   | **Content**: `{ "error": "Account not found" }`|
+|                   | **Code**: 500 Internal Server Error          |
+|                   | **Content**: `{ "error": "Error message here" }` |
+| **Description**   | Allows users to change their password after verifying the old password. |
 
-### Create User Endpoint (Admin only)
+### Create Account
 
 | Aspect            | Details                                       |
 |-------------------|-----------------------------------------------|
-| **Route**         | `/api/users/create-user`                      |
+| **Route**         | `/api/account/create-account`                 |
 | **HTTP Method**   | POST                                          |
-| **Headers**       | `Content-Type`: application/json, `Authorization`: Bearer Token |
-| **Query Parameters** | None                                        |
-| **Request Body**  | `{ "FirstName": "John", "LastName": "Doe", "Email": "john.doe@example.com", "RoleID": "role_uuid", "PasswordHash": "initial_password" }` |
-| **Success Response** | **Code**: 201 Created                       |
-|                   | **Content**: `{ "message": "User created successfully" }` |
-| **Error Response**| **Code**: 403 Forbidden                       |
-|                   | **Content**: `{ "error": "Access denied" }`   |
-| **Description**   | This endpoint allows admin users to create new users in the system. It requires admin authentication and role verification via JWT. |
+| **Headers**       | `Content-Type`: application/json              |
+| **Query Parameters** | None                                      |
+| **Request Body**  | `{ "firstName": "John", "lastName": "Doe", "email": "johndoe@example.com", "password": "yourPassword" }` |
+| **Success Response** | **Code**: 201 Created                    |
+|                   | **Content**: `{ "message": "Account created successfully" }` |
+| **Error Response**| **Code**: 500 Internal Server Error          |
+|                   | **Content**: `{ "error": "Error message here" }` |
+| **Description**   | This endpoint allows for the creation of a new account with first name, last name, email, and password. |
