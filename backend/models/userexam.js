@@ -56,31 +56,13 @@ module.exports = (sequelize) => {
   });
 
   UserExam.associate = function (models) {
-    UserExam.belongsTo(models.User, {
+    this.belongsTo(models.User, {
       foreignKey: 'UserID',
       as: 'user'
     });
-    UserExam.belongsTo(models.Exam, {
+    this.belongsTo(models.Exam, {
       foreignKey: 'ExamID',
       as: 'exam'
-    });
-  };
-
-  User.associate = function (models) {
-    User.belongsToMany(models.Exam, {
-      through: 'UserExam',
-      foreignKey: 'UserID',
-      otherKey: 'ExamID',
-      as: 'exams'
-    });
-  };
-
-  Exam.associate = function (models) {
-    Exam.belongsToMany(models.User, {
-      through: 'UserExam',
-      foreignKey: 'ExamID',
-      otherKey: 'UserID',
-      as: 'users'
     });
   };
 
