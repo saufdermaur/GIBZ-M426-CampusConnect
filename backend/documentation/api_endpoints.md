@@ -61,7 +61,7 @@
 | **HTTP Method**   | POST                                          |
 | **Headers**       | `Content-Type`: application/json              |
 | **Query Parameters** | None                                      |
-| **Request Body**  | `{ "accountId": "UUID", "oldPassword": "oldPass", "newPassword": "newPass" }` |
+| **Request Body**  | `{ "oldPassword": "oldPass", "newPassword": "newPass" }` |
 | **Success Response** | **Code**: 200 OK                         |
 |                   | **Content**: `{ "message": "Password successfully updated" }` |
 | **Error Response**| **Code**: 401 Unauthorized                   |
@@ -86,3 +86,75 @@
 | **Error Response**| **Code**: 500 Internal Server Error          |
 |                   | **Content**: `{ "error": "Error message here" }` |
 | **Description**   | This endpoint allows for the creation of a new account with first name, last name, email, and password. |
+
+### Get Account Information
+
+| Aspect            | Details                                       |
+|-------------------|-----------------------------------------------|
+| **Route**         | `/api/account/account-info`                   |
+| **HTTP Method**   | GET                                           |
+| **Headers**       | `Authorization`: Bearer Token                 |
+| **Query Parameters** | None                                      |
+| **Request Body**  | None                                          |
+| **Success Response** | **Code**: 200 OK                         |
+|                   | **Content**: `{ "firstName": "John", "lastName": "Doe", "email": "johndoe@example.com" }` |
+| **Error Response**| **Code**: 404 Not Found                      |
+|                   | **Content**: `{ "error": "Account not found" }`|
+|                   | **Code**: 500 Internal Server Error          |
+|                   | **Content**: `{ "error": "Error message here" }` |
+| **Description**   | Retrieves basic account information such as first name, last name, and email for the logged-in user. |
+
+### Change Email
+
+| Aspect            | Details                                       |
+|-------------------|-----------------------------------------------|
+| **Route**         | `/api/account/change-email`                   |
+| **HTTP Method**   | POST                                          |
+| **Headers**       | `Authorization`: Bearer Token, `Content-Type`: application/json |
+| **Query Parameters** | None                                      |
+| **Request Body**  | `{ "newEmail": "newemail@example.com" }` |
+| **Success Response** | **Code**: 200 OK                         |
+|                   | **Content**: `{ "message": "Email successfully updated" }` |
+| **Error Response**| **Code**: 400 Bad Request                    |
+|                   | **Content**: `{ "error": "Invalid email format" }` |
+|                   | **Code**: 404 Not Found                      |
+|                   | **Content**: `{ "error": "Account not found" }`|
+|                   | **Code**: 409 Conflict                       |
+|                   | **Content**: `{ "error": "Email already in use" }` |
+|                   | **Code**: 500 Internal Server Error          |
+|                   | **Content**: `{ "error": "Error message here" }` |
+| **Description**   | Allows the user to update their email address after verifying that the new email is not already in use and is in a valid format. |
+
+### Change First Name
+
+| Aspect            | Details                                       |
+|-------------------|-----------------------------------------------|
+| **Route**         | `/api/account/change-first-name`              |
+| **HTTP Method**   | PATCH                                         |
+| **Headers**       | `Authorization`: Bearer Token, `Content-Type`: application/json |
+| **Query Parameters** | None                                      |
+| **Request Body**  | `{ "firstName": "NewFirstName" }`            |
+| **Success Response** | **Code**: 200 OK                         |
+|                   | **Content**: `{ "message": "First name updated successfully" }` |
+| **Error Response**| **Code**: 404 Not Found                      |
+|                   | **Content**: `{ "error": "Account not found" }`|
+|                   | **Code**: 500 Internal Server Error          |
+|                   | **Content**: `{ "error": "Error message here" }` |
+| **Description**   | Allows the user to update their first name. This endpoint requires authentication and uses a PATCH method to indicate a partial update of the account data. |
+
+### Change Last Name
+
+| Aspect            | Details                                       |
+|-------------------|-----------------------------------------------|
+| **Route**         | `/api/account/change-last-name`               |
+| **HTTP Method**   | PATCH                                         |
+| **Headers**       | `Authorization`: Bearer Token, `Content-Type`: application/json |
+| **Query Parameters** | None                                      |
+| **Request Body**  | `{ "lastName": "NewLastName" }` |
+| **Success Response** | **Code**: 200 OK                         |
+|                   | **Content**: `{ "message": "Last name updated successfully" }` |
+| **Error Response**| **Code**: 404 Not Found                      |
+|                   | **Content**: `{ "error": "Account not found" }`|
+|                   | **Code**: 500 Internal Server Error          |
+|                   | **Content**: `{ "error": "Error message here" }` |
+| **Description**   | Allows the user to update their last name. This endpoint requires authentication and uses a PATCH method for partial data modification. |
