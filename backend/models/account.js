@@ -1,10 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 module.exports = (sequelize) => {
-  class Account extends Model { }
-
-  const bcrypt = require('bcrypt');
-  const saltRounds = 10;
+  class Account extends Model {}
 
   Account.init({
     AccountID: {
@@ -34,24 +32,22 @@ module.exports = (sequelize) => {
       allowNull: false
     }
   }, {
+    sequelize,
+    modelName: 'Account',
+    tableName: 'Accounts',
     hooks: {
       beforeCreate: async (account) => {
-        const hash = await bcrypt.hash(account.PasswordHash, saltRounds);
-        account.PasswordHash = hash;
+        const saltRounds = 10;
+        account.PasswordHash = await bcrypt.hash(account.PasswordHash, saltRounds);
       },
       beforeUpdate: async (account) => {
         if (account.changed('PasswordHash')) {
-          const hash = await bcrypt.hash(account.PasswordHash, saltRounds);
-          account.PasswordHash = hash;
+          const saltRounds = 10;
+          account.PasswordHash = await bcrypt.hash(account.PasswordHash, saltRounds);
         }
       }
-    },
-  },
-    {
-      sequelize,
-      modelName: 'Account',
-      tableName: 'Accounts'
-    });
+    }
+  });
 
   Account.associate = function (models) {
     this.hasMany(models.Module, {

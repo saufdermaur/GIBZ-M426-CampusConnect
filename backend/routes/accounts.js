@@ -1,11 +1,26 @@
 const express = require('express');
 const { verifyToken } = require('../middleware/auth');
-const { Account } = require('../models/account');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const router = express.Router();
 
+const { Sequelize, DataTypes } = require('sequelize');
+const config = require('../config/config.js');
+const defineAccountModel = require('../models/account');
+
+const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
+
+const sequelize = new Sequelize(
+  config.development.database,
+  config.development.username,
+  config.development.password,
+  {
+    host: config.development.host,
+    dialect: config.development.dialect,
+  }
+);
+
+const Account = defineAccountModel(sequelize, DataTypes);
 
 // Create account endpoint
 router.post('/create-account', async (req, res) => {
