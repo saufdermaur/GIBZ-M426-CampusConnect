@@ -4,15 +4,16 @@ const { Sequelize } = require('sequelize');
 const config = require('./config/config.js');
 
 const app = express();
-const PORT = 3000;
+const PORT = 6790;
 
 const sequelize = new Sequelize(
-  config.development.database,
-  config.development.username,
-  config.development.password,
+  config.test.database,
+  config.test.username,
+  config.test.password,
   {
-    host: config.development.host,
-    dialect: config.development.dialect,
+    host: config.test.host,
+    dialect: config.test.dialect,
+    port: config.test.port,
     logging: false
   }
 );
@@ -32,8 +33,8 @@ const sequelize = new Sequelize(
       res.status(200).send('Hello World!');
     });
 
-    app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
     console.error('Unable to connect to the database:', error);

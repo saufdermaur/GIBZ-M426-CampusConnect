@@ -11,12 +11,13 @@ const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const sequelize = new Sequelize(
-  config.development.database,
-  config.development.username,
-  config.development.password,
+  config.test.database,
+  config.test.username,
+  config.test.password,
   {
-    host: config.development.host,
-    dialect: config.development.dialect,
+    host: config.test.host,
+    dialect: config.test.dialect,
+    port: config.test.port,
   }
 );
 

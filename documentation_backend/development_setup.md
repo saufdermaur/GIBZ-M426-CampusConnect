@@ -34,11 +34,11 @@ For local database setup, follow these steps:
 Create a `.env` file in the root of your backend directory with the following content to configure database connection parameters:
 
 ```plaintext
-DEV_DB_HOST=localhost
-DEV_DB_USER=postgres
-DEV_DB_PASS=postgres
-DEV_DB_NAME=campusconnect
-DEV_DB_PORT=5432
+TEST_DB_HOST=localhost
+TEST_DB_USER=postgres
+TEST_DB_PASS=postgres
+TEST_DB_NAME=campusconnect
+TEST_DB_PORT=5432
 
 JWT_SECRET=my-secret-jwt-key
 ```
