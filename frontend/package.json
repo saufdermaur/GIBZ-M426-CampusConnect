@@ -8,14 +8,20 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@schedule-x/calendar": "^1.42.1",
+    "@schedule-x/theme-default": "^1.42.1",
+    "@schedule-x/vue": "^1.38.0",
     "axios": "^1.6.8",
     "core-js": "^3.8.3",
     "cors": "^2.8.5",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.13",
+    "vuetify": "^3.6.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@mdi/font": "^7.4.47",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "^5.0.8",
