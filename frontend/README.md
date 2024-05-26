@@ -1,6 +1,15 @@
 # frontend
 
 ## Project setup
+
+### Navigate to the /frontend folder 
+
+```
+cd frontend
+```
+
+### Install dependencies
+
 ```
 npm install
 ```
