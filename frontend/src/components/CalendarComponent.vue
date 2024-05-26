@@ -1,3 +1,9 @@
+<template>
+  <div>
+    <ScheduleXCalendar :calendar-app="calendarApp" />
+  </div>
+</template>
+
 <script setup>
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import {
@@ -10,7 +16,13 @@ import {
 import '@schedule-x/theme-default/dist/index.css'
 
 const calendarApp = createCalendar({
-  selectedDate: '2023-12-19',
+  locale: 'de-CH',
+  firstDayOfWeek: 1,
+  dayBoundaries: {
+    start: '07:00',
+    end: '21:00',
+  },
+  selectedDate: new Date().toISOString().split('T')[0],
   views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
   defaultView: viewWeek.name,
   events: [
@@ -29,9 +41,11 @@ const calendarApp = createCalendar({
   ],
 })
 </script>
- 
-<template>
-  <div>
-    <ScheduleXCalendar :calendar-app="calendarApp" />
-  </div>
-</template>
+
+<style>
+.sx-vue-calendar-wrapper {
+  width: 100%;
+  height: 800px;
+  max-height: 90vh;
+}
+</style>

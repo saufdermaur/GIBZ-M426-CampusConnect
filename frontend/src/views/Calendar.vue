@@ -13,10 +13,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.about {
-    text-align: center;
-    margin-top: 50px;
-}
-</style>

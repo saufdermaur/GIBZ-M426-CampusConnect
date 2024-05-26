@@ -58,3 +58,34 @@ To run the backend server, use the following command:
 ```bash
 node server.js
 ```
+
+## Using Swagger
+
+If you want to use the built-in swagger, build the backend like described. Then use the URL provided by the backend (mostly `http://localhost`) now you should see a `Hello World!` for swagger navigate to: `:<backend port>\api-docs`. For example: `http://localhost:6790/api-docs`
+
+Keep in mind, that Swagger sometimes suggests parameters that are falsely fetched from the .js files. Make sure that you enter correct values. For example:
+
+Swagger:
+
+`POST: /api/account/create-account`
+```json
+{
+  "accountID": "d5fE_asz",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "passwordHash": "$2b$10$EIX/fp5j5TLm1Vsi58xjXe6/uhH2Boe9M5pEERQ/RqA/ff5fJ6wK6"
+}
+```
+
+Correct: 
+
+`POST: /api/account/create-account`
+```json
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "password": "yourPassword"
+}
+```

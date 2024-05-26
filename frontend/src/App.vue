@@ -22,7 +22,7 @@
 
       <v-navigation-drawer
         v-model="drawer"
-        :location="$vuetify.display.mobile ? 'bottom' : undefined"
+        :location="$vuetify.display.mobile ? 'top' : undefined"
         permanent
       >
         <v-list nav>

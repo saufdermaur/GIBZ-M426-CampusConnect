@@ -1,9 +1,14 @@
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swaggerConfig');
 const cors = require('cors');
 const { Sequelize } = require('sequelize');
 const config = require('./config/config.js');
 
 const app = express();
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 const PORT = 6790;
 
 const sequelize = new Sequelize(
@@ -28,6 +33,12 @@ const sequelize = new Sequelize(
 
     const accountRoutes = require('./routes/accounts');
     app.use('/api/account', accountRoutes);
+
+    const moduleRoutes = require('./routes/modules');
+    app.use('/api/module', moduleRoutes);
+
+    const examRoutes = require('./routes/exams');
+    app.use('/api/exam', moduleRoutes);
 
     app.get('/', (req, res) => {
       res.status(200).send('Hello World!');
