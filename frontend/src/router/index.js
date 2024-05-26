@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import APITest from "../views/APITest.vue";
+import Calendar from "@/views/Calendar.vue";
 
 const routes = [
     {
@@ -13,6 +14,11 @@ const routes = [
         path: "/apiTest",
         name: "API Test",
         component: APITest
+    },
+    {
+        path: "/calendar",
+        name: "Calendar",
+        component: Calendar
     },
     {
         path: "/about",
