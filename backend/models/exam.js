@@ -2,7 +2,6 @@ const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   class Exam extends Model { }
-
   Exam.init({
     ExamID: {
       type: DataTypes.UUID,

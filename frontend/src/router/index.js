@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import APITest from "../views/APITest.vue";
 import Calendar from "@/views/Calendar.vue";
+import LoginForm from "@/components/LoginForm.vue";
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
         path: "/about",
         name: "About",
         component: About
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: LoginForm
     }
 ]
 

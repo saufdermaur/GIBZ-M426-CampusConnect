@@ -38,7 +38,7 @@ const sequelize = new Sequelize(
     app.use('/api/module', moduleRoutes);
 
     const examRoutes = require('./routes/exams');
-    app.use('/api/exam', moduleRoutes);
+    app.use('/api/exam', examRoutes);
 
     app.get('/', (req, res) => {
       res.status(200).send('Hello World!');

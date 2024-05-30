@@ -11,13 +11,8 @@
 
         <v-spacer></v-spacer>
 
-        <template v-if="$vuetify.display.mdAndUp">
-          <v-btn icon="mdi-magnify" variant="text"></v-btn>
-
-          <v-btn icon="mdi-filter" variant="text"></v-btn>
-        </template>
-
-        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
+        <v-btn icon="mdi-bell" variant="text"></v-btn>
+        <v-btn icon="mdi-account" variant="text" @click="goToLogin"></v-btn>
       </v-app-bar>
 
       <v-navigation-drawer
@@ -68,6 +63,11 @@ export default {
   watch: {
     group() {
       this.drawer = false;
+    },
+  },
+  methods: {
+    goToLogin() {
+      this.$router.push({ name: "Login" });
     },
   },
 };
