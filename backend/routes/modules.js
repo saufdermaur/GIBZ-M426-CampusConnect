@@ -1,4 +1,3 @@
-```javascript
 const express = require('express');
 const { verifyToken } = require('../middleware/auth');
 const { Sequelize, DataTypes } = require('sequelize');
@@ -91,4 +90,3 @@ router.delete('/:id', verifyToken, async (req, res) => {
 });
 
 module.exports = router;
-```

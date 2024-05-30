@@ -79,7 +79,7 @@
 
 /**
  * @swagger
- * /api/exam/:
+ * /api/exam/getAll:
  *   get:
  *     summary: Returns the list of all the exams
  *     tags: [Exams]

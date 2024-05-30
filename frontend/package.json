@@ -19,8 +19,9 @@
     "vuetify": "^3.6.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "^7.24.6",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/preset-env": "^7.24.6",
     "@mdi/font": "^7.4.47",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",

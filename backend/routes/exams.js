@@ -36,7 +36,7 @@ router.post('/create-exam', verifyToken, async (req, res) => {
   }
 });
 
-router.get('/exams', verifyToken, async (req, res) => {
+router.get('/getAll', verifyToken, async (req, res) => {
   try {
     const exams = await Exam.findAll();
     res.status(200).json(exams);
@@ -45,7 +45,7 @@ router.get('/exams', verifyToken, async (req, res) => {
   }
 });
 
-router.get('/exams/:id', verifyToken, async (req, res) => {
+router.get('/:id', verifyToken, async (req, res) => {
   try {
     const exam = await Exam.findOne({ where: { ExamID: req.params.id } });
     if (!exam) {
@@ -57,7 +57,7 @@ router.get('/exams/:id', verifyToken, async (req, res) => {
   }
 });
 
-router.put('/exams/:id', verifyToken, async (req, res) => {
+router.put('/:id', verifyToken, async (req, res) => {
   const { grade, weight, examTitle, description, examDate } = req.body;
   try {
     const exam = await Exam.findOne({
@@ -78,7 +78,7 @@ router.put('/exams/:id', verifyToken, async (req, res) => {
   }
 });
 
-router.delete('/exams/:id', verifyToken, async (req, res) => {
+router.delete('/:id', verifyToken, async (req, res) => {
   try {
     const exam = await Exam.findOne({
       where: { ExamID: req.params.id }
