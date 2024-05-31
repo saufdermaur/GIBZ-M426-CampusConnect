@@ -5,17 +5,29 @@
 </template>
 
 <script setup>
-import { ScheduleXCalendar } from '@schedule-x/vue'
+import { onMounted } from 'vue';
+import { ScheduleXCalendar } from '@schedule-x/vue';
+import { createEventsServicePlugin } from '@schedule-x/events-service';
 import {
   createCalendar,
   viewDay,
   viewWeek,
   viewMonthGrid,
   viewMonthAgenda,
-} from '@schedule-x/calendar'
-import '@schedule-x/theme-default/dist/index.css'
+} from '@schedule-x/calendar';
+import '@schedule-x/theme-default/dist/index.css';
+import axios from 'axios';
+
+const BASE_URL = "http://localhost:6790";
+
+const apiClient = axios.create({
+  baseURL: BASE_URL,
+});
+
+const eventsServicePlugin = createEventsServicePlugin();
 
 const calendarApp = createCalendar({
+  plugins: [eventsServicePlugin],
   locale: 'de-CH',
   firstDayOfWeek: 1,
   dayBoundaries: {
@@ -25,21 +37,30 @@ const calendarApp = createCalendar({
   selectedDate: new Date().toISOString().split('T')[0],
   views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
   defaultView: viewWeek.name,
-  events: [
-    {
-      id: 1,
-      title: 'Event 1',
-      start: '2023-12-19',
-      end: '2023-12-19',
-    },
-    {
-      id: 2,
-      title: 'Event 2',
-      start: '2023-12-20 12:00',
-      end: '2023-12-20 13:00',
-    },
-  ],
-})
+  events: [],
+});
+
+async function fetchCalendarEvents() {
+  try {
+    const token = localStorage.getItem('jwt');
+    const response = await apiClient.get("/api/exam/getAll", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const events = response.data.map(event => ({
+      title: event.ExamTitle,
+      start: new Date(event.ExamDate).toISOString(),
+      end: new Date(event.ExamDate).toISOString(),
+      id: event.ExamID
+    }));
+    eventsServicePlugin.set(events);
+  } catch (error) {
+    console.error("Error fetching events:", error.response ? error.response.data : error.message);
+  }
+}
+
+onMounted(fetchCalendarEvents);
 </script>
 
 <style>
