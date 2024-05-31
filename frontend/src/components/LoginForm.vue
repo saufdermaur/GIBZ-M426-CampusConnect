@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <form @submit.prevent="login">
-      <input v-model="email" type="text" placeholder="email">
-      <input v-model="password" type="password" placeholder="password">
-      <br>
-      <input type="submit" value="log in">
-    </form>
+  <div class="d-flex align-center justify-center" style="height: 100vh">
+      <v-sheet width="400" class="mx-auto">
+          <v-form fast-fail @submit.prevent="login">
+              <v-text-field v-model="email" label="E-Mail"></v-text-field>
+
+              <v-text-field v-model="password" label="password"></v-text-field>
+              <a href="#" class="text-body-2 font-weight-regular">Forgot Password?</a>
+
+              <v-btn type="submit" color="primary" block class="mt-2">Sign in</v-btn>
+
+          </v-form>
+          <div class="mt-2">
+              <p class="text-body-2">Don't have an account? <a href="#">Sign Up</a></p>
+          </div>
+      </v-sheet>
   </div>
 </template>
 
@@ -38,7 +46,7 @@ methods: {
       // Save token in local storage
       localStorage.setItem('jwt', token);
       // Redirect to another route after successful login
-      this.$router.push('/dashboard');
+      this.$router.push('/');
     } catch (error) {
       console.log(error.config);
       throw error;
