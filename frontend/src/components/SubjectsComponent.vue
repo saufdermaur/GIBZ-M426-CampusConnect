@@ -6,7 +6,7 @@
     </div>
 
     <!-- Table section -->
-    <table v-if="subjects.length">
+    <table v-if="subjects.length" class="table-header">
       <thead>
         <tr>
           <th>Subject</th>
@@ -27,8 +27,12 @@
             <a href="#">{{ subject.calendar }}</a>
           </td>
           <td>
-            <button @click="editSubject(index)">Edit</button>
-            <button @click="deleteSubject(index)">Delete</button>
+            <button @click="editSubject(index)" class="edit-button">
+              Edit
+            </button>
+            <button @click="deleteSubject(index)" class="delete-button">
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
@@ -242,21 +246,32 @@ td {
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: #5e5e5e;
 }
 
 button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 5px 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #007bff;
+  background-color: #2272a7;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #1b5d8a;
+}
+
+.edit-button {
+  background-color: #5cb85c;
+}
+
+.delete-button {
+  background-color: #d9534f;
 }
 
 .modal {
@@ -268,11 +283,11 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #3a3a3a;
 }
 
 .modal-content {
-  background-color: white;
+  background-color: #5e5e5e;
   padding: 20px;
   border-radius: 5px;
   width: 300px;

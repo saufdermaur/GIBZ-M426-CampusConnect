@@ -22,5 +22,6 @@ export default {
 .info {
   text-align: center;
   margin-top: 50px;
+  color: #ffffff;
 }
 </style>
