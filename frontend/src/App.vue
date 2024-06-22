@@ -32,6 +32,11 @@
             :to="{ name: 'API Test' }"
           ></v-list-item>
           <v-list-item
+            prepend-icon="mdi-book-multiple"
+            title="Subjects"
+            :to="{ name: 'Subjects' }"
+          ></v-list-item>
+          <v-list-item
             prepend-icon="mdi-calendar"
             title="Calendar"
             :to="{ name: 'Calendar' }"
