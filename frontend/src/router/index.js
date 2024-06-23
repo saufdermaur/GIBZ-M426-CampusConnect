@@ -1,10 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import APITest from "../views/APITest.vue";
 import Calendar from "@/views/Calendar.vue";
 import LoginForm from "@/components/LoginForm.vue";
-import Subjects from "@/views/Subjects.vue";
 import Modules from "@/views/Modules.vue";
 import Exams from "@/views/Exams.vue";
 
@@ -13,11 +11,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-  },
-  {
-    path: "/apiTest",
-    name: "API Test",
-    component: APITest,
   },
   {
     path: "/calendar",
@@ -33,11 +26,6 @@ const routes = [
     path: "/login",
     name: "Login",
     component: LoginForm,
-  },
-  {
-    path: "/subjects",
-    name: "Subjects",
-    component: Subjects,
   },
   {
     path: "/modules",

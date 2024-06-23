@@ -4,6 +4,7 @@ const { Sequelize, DataTypes, Op } = require('sequelize');
 const config = require('../config/config.js');
 const defineExamModel = require('../models/exam.js');
 const defineModuleModel = require('../models/module.js');
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -21,27 +22,42 @@ const sequelize = new Sequelize(
 const Exam = defineExamModel(sequelize, DataTypes);
 const Module = defineModuleModel(sequelize, DataTypes);
 
-router.post("/create-exam", verifyToken, async (req, res) => {
-  const { moduleId, grade, weight, examTitle, description, examDate } =
-    req.body;
+router.use(verifyToken); // Applying verifyToken middleware for all routes
+
+// Middleware to decode JWT and set accountId in request
+const decodeJwtMiddleware = (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.decode(token);
+    req.accountId = decodedToken.accountId;
+    next();
+  } catch (error) {
+    res.status(401).json({ message: 'Invalid or missing token' });
+  }
+};
+
+// Apply decodeJwtMiddleware to all routes after verifyToken
+router.use(decodeJwtMiddleware);
+
+// Routes
+router.post("/create-exam", async (req, res) => {
+  const { ModuleId, Grade, Weight, ExamTitle, Description, ExamDate } = req.body;
   try {
     const newExam = await Exam.create({
-      ModuleID: moduleId,
-      Grade: grade,
-      Weight: weight,
-      ExamTitle: examTitle,
-      Description: description,
-      ExamDate: examDate,
+      ModuleID: ModuleId,
+      Grade: Grade,
+      Weight: Weight,
+      ExamTitle: ExamTitle,
+      Description: Description,
+      ExamDate: ExamDate,
     });
-    res
-      .status(201)
-      .json({ message: "Exam created successfully", exam: newExam });
+    res.status(201).json({ message: "Exam created successfully", exam: newExam });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-router.get("/getAll", verifyToken, async (req, res) => {
+router.get("/getAll", async (req, res) => {
   try {
     const modules = await Module.findAll({ where: { AccountID: req.account.accountId } });
 
@@ -59,7 +75,7 @@ router.get("/getAll", verifyToken, async (req, res) => {
   }
 });
 
-router.get('/getExamsThisWeek', verifyToken, async (req, res) => {
+router.get('/getExamsThisWeek', async (req, res) => {
   try {
     const modules = await Module.findAll({
       where: { AccountID: req.account.accountId }
@@ -82,7 +98,7 @@ router.get('/getExamsThisWeek', verifyToken, async (req, res) => {
   }
 });
 
-router.get('/getAverageGrades', verifyToken, async (req, res) => {
+router.get('/getAverageGrades', async (req, res) => {
   try {
     // Fetch all modules for the given account ID
     const modules = await Module.findAll({
@@ -126,7 +142,7 @@ router.get('/getAverageGrades', verifyToken, async (req, res) => {
   }
 });
 
-router.get('/:id', verifyToken, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const exam = await Exam.findOne({ where: { ExamID: req.params.id } });
     if (!exam) {
@@ -138,8 +154,9 @@ router.get('/:id', verifyToken, async (req, res) => {
   }
 });
 
-router.put("/:id", verifyToken, async (req, res) => {
-  const { grade, weight, examTitle, description, examDate } = req.body;
+router.put("/:id", async (req, res) => {
+  const { ModuleId, Grade, Weight, ExamTitle, Description, ExamDate } = req.body;
+  console.log(ExamDate);
   try {
     const exam = await Exam.findOne({
       where: { ExamID: req.params.id },
@@ -147,11 +164,12 @@ router.put("/:id", verifyToken, async (req, res) => {
     if (!exam) {
       return res.status(404).json({ message: "Exam not found" });
     }
-    exam.Grade = grade || exam.Grade;
-    exam.Weight = weight || exam.Weight;
-    exam.ExamTitle = examTitle || exam.ExamTitle;
-    exam.Description = description || exam.Description;
-    exam.ExamDate = examDate || exam.ExamDate;
+    exam.ModuleID = ModuleId || exam.ModuleID;
+    exam.Grade = Grade || exam.Grade;
+    exam.Weight = Weight || exam.Weight;
+    exam.ExamTitle = ExamTitle || exam.ExamTitle;
+    exam.Description = Description || exam.Description;
+    exam.ExamDate = ExamDate || exam.ExamDate;
     await exam.save();
     res.status(200).json({ message: "Exam updated successfully", exam });
   } catch (error) {
@@ -159,7 +177,7 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 
-router.delete("/:id", verifyToken, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const exam = await Exam.findOne({
       where: { ExamID: req.params.id },

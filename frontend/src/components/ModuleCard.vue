@@ -1,13 +1,16 @@
 <template>
-    <v-card variant="tonal" class="card">
-      <v-btn color="grey-darken-4" @click="createModule">Modul erstellen</v-btn>
-  
+    <v-card>
+      <!-- Button to create new module -->
+      <v-btn color="primary" @click="createModule">Modul erstellen</v-btn>
+      <v-spacer></v-spacer>
+      <!-- Data table to display modules -->
       <v-data-table
         :headers="headers"
         :items="modules"
         item-key="ModuleID"
         :sort-by="[{ key: 'Name', order: 'asc' }]"
       >
+        <!-- Actions column with edit and delete buttons -->
         <template v-slot:[`item.actions`]="{ item }">
           <v-icon small class="mr-2" @click="editItem(item)">mdi-pencil</v-icon>
           <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
@@ -22,12 +25,8 @@
           </v-card-title>
           <v-card-text>
             <v-container>
-              <v-row>
-                <v-text-field v-model="editedItem.Name" label="Name"></v-text-field>
-              </v-row>
-              <v-row>
-                <v-text-field v-model="editedItem.Description" label="Beschreibung"></v-text-field>
-              </v-row>
+              <v-text-field v-model="editedItem.Name" label="Name"></v-text-field>
+              <v-text-field v-model="editedItem.Description" label="Beschreibung"></v-text-field>
             </v-container>
           </v-card-text>
           <v-card-actions>
@@ -50,7 +49,7 @@
         </v-card>
       </v-dialog>
   
-      <!-- Dialog for creating module -->
+      <!-- Dialog for creating new module -->
       <v-dialog v-model="newModuleDialog" max-width="500px">
         <v-card>
           <v-card-title>
@@ -71,7 +70,6 @@
       </v-dialog>
     </v-card>
   </template>
-  
   <script>
   const BASE_URL = "http://localhost:6790";
   
@@ -126,16 +124,17 @@
       fetchData() {
         axios.get(`${BASE_URL}/api/module/getAll`, {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-            },
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json',
+          },
         })
-          .then(response => {
-            this.modules = response.data;
-            this.loading = false;
-          })
-          .catch(error => {
-            console.error('Error fetching data:', error);
-          });
+        .then(response => {
+          this.modules = response.data;
+          this.loading = false;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
       },
   
       createModule() {
@@ -147,25 +146,29 @@
         this.editedItem = { ...item };
         this.dialog = true;
       },
+  
       deleteItem(item) {
         this.editedIndex = this.modules.indexOf(item);
         this.editedItem = { ...item };
         this.dialogDelete = true;
       },
+  
       deleteItemConfirm() {
         axios.delete(`${BASE_URL}/api/module/${this.editedItem.ModuleID}`, {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-            },
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json',
+          },
         })
-          .then(() => {
-            this.modules.splice(this.editedIndex, 1);
-            this.closeDelete();
-          })
-          .catch(error => {
-            console.error('Error deleting module:', error);
-          });
+        .then(() => {
+          this.modules.splice(this.editedIndex, 1);
+          this.closeDelete();
+        })
+        .catch(error => {
+          console.error('Error deleting module:', error);
+        });
       },
+  
       close() {
         this.dialog = false;
         this.$nextTick(() => {
@@ -173,6 +176,7 @@
           this.editedIndex = -1;
         });
       },
+  
       closeDelete() {
         this.dialogDelete = false;
         this.$nextTick(() => {
@@ -180,74 +184,59 @@
           this.editedIndex = -1;
         });
       },
+  
       save() {
-        if (this.editedIndex > -1) {
-          const { ModuleID, Name, Description } = this.editedItem;
-          axios.put(`${BASE_URL}/api/module/create-module`, 
-            { Name, Description, ModuleID }, // Correctly send Name and Description in the request body
-            {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-                'Content-Type': 'application/json', // Specify content type
-            },
-            }
-        )
-            .then(() => {
-              this.modules.splice(this.editedIndex, 1, { ...this.editedItem });
-              this.close();
-            })
-            .catch(error => {
-              console.error('Error updating module:', error);
-            });
-        } else {
-          const { Name, Description } = this.editedItem;
-          axios.post(`${BASE_URL}/api/module/create-module`, 
-            { Name, Description }, // Correctly send Name and Description in the request body
-            {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-                'Content-Type': 'application/json', // Specify content type
-            },
-            }
-        )
-            .then(response => {
-              this.modules.push(response.data);
-              this.close();
-            })
-            .catch(error => {
-              console.error('Error creating module:', error);
-            });
-        }
+        const { ModuleID, Name, Description } = this.editedItem;
+        const axiosMethod = this.editedIndex > -1 ? axios.put : axios.post;
+        const url = this.editedIndex > -1 ? `${BASE_URL}/api/module/${ModuleID}` : `${BASE_URL}/api/module/create-module`;
+  
+        axiosMethod(url, { Name, Description }, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then(response => {
+          if (this.editedIndex > -1) {
+            this.modules.splice(this.editedIndex, 1, { ...this.editedItem });
+          } else {
+            this.modules.push(response.data);
+          }
+          this.close();
+        })
+        .catch(error => {
+          console.error('Error saving module:', error);
+        });
       },
+  
       closeCreateModule() {
         this.newModuleDialog = false;
         this.$nextTick(() => {
           this.defaultItem = { ...this.defaultItem };
         });
       },
+  
       saveNewModule() {
         const { Name, Description } = this.defaultItem;
-        axios.post(`${BASE_URL}/api/module/create-module`, 
-            { Name, Description }, // Correctly send Name and Description in the request body
-            {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-                'Content-Type': 'application/json', // Specify content type
-            },
-            }
-        )
+        axios.post(`${BASE_URL}/api/module/create-module`, { Name, Description }, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json',
+          },
+        })
         .then(response => {
-            this.modules.push(response.data);
-            this.closeCreateModule();
-            this.fetchData();
+          this.modules.push(response.data);
+          this.closeCreateModule();
+          this.fetchData();
         })
         .catch(error => {
-            console.error('Error creating module:', error);
+          console.error('Error creating module:', error);
         });
-        }
+      },
     },
   };
   </script>
+  
   
   <style>
   .mr-2 {

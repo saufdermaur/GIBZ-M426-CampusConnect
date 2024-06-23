@@ -24,11 +24,6 @@
             :to="{ name: 'Home' }"
           ></v-list-item>
           <v-list-item
-            prepend-icon="mdi-api"
-            title="API Test"
-            :to="{ name: 'API Test' }"
-          ></v-list-item>
-          <v-list-item
             prepend-icon="mdi-book-multiple"
             title="Modules"
             :to="{ name: 'Modules' }"
@@ -37,11 +32,6 @@
             prepend-icon="mdi-book-multiple"
             title="Exams"
             :to="{ name: 'Exams' }"
-          ></v-list-item>
-          <v-list-item
-            prepend-icon="mdi-book-multiple"
-            title="Subjects"
-            :to="{ name: 'Subjects' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-calendar"
@@ -94,7 +84,7 @@ export default {
 .pages-background {
   background-color: #353535;
   color: #ffffff; /* Optional: Adjust text color for better contrast */
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .app-bar-background {

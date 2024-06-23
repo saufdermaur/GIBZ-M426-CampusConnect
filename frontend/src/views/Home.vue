@@ -32,7 +32,7 @@
         <v-row>
           <v-col>
             <v-card variant="tonal" class="exam-card" v-for="exam in exams" :key="exam.ExamID">
-              <v-card-title>Nächste Woche stehen folgende Prüfungen an</v-card-title>
+              <v-card-title>Prüfung nächste Woche</v-card-title>
               <v-card-text>Name: {{ exam.ExamTitle }}</v-card-text>
               <v-card-text>Datum: {{ exam.ExamDate }}</v-card-text>
               <v-card-text>Gewichtung: {{ exam.Weight }}</v-card-text>
