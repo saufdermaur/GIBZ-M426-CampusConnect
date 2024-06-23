@@ -100,6 +100,49 @@
 
 /**
  * @swagger
+ * /api/exam/getExamsThisWeek:
+ *   get:
+ *     summary: Returns the list of exams scheduled for the next 7 days
+ *     tags: [Exams]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: The list of the exams for the next 7 days
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Exam'
+ *       500:
+ *         description: Some server error
+ */
+
+/**
+ * @swagger
+ * /api/exam/getAverageGrades:
+ *   get:
+ *     summary: Returns the list of grades for all exams
+ *     tags: [Exams]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: The list of grades for all exams
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: number
+ *                 format: float
+ *       500:
+ *         description: Some server error
+ */
+
+/**
+ * @swagger
  * /api/exam/{id}:
  *   get:
  *     summary: Get an exam by ID
