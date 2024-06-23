@@ -33,7 +33,7 @@
  * @swagger
  * tags:
  *   name: Modules
- *   description: The modules managing API
+ *   description: APIs for managing modules
  */
 
 /**
@@ -65,13 +65,13 @@
  * @swagger
  * /api/module/getAll:
  *   get:
- *     summary: Returns the list of all the modules
+ *     summary: Get all modules associated with the authenticated account
  *     tags: [Modules]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: The list of the modules
+ *         description: List of modules
  *         content:
  *           application/json:
  *             schema:
@@ -95,18 +95,18 @@
  *           type: string
  *           format: uuid
  *         required: true
- *         description: The module ID
+ *         description: Module ID
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: The module description by ID
+ *         description: Module details retrieved successfully
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Module'
  *       404:
- *         description: The module was not found
+ *         description: Module not found
  *       500:
  *         description: Some server error
  */
@@ -124,7 +124,7 @@
  *           type: string
  *           format: uuid
  *         required: true
- *         description: The module ID
+ *         description: Module ID
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -135,13 +135,13 @@
  *             $ref: '#/components/schemas/Module'
  *     responses:
  *       200:
- *         description: The module was successfully updated
+ *         description: Module updated successfully
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Module'
  *       404:
- *         description: The module was not found
+ *         description: Module not found
  *       500:
  *         description: Some server error
  */
@@ -159,14 +159,14 @@
  *           type: string
  *           format: uuid
  *         required: true
- *         description: The module ID
+ *         description: Module ID
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: The module was successfully deleted
+ *         description: Module deleted successfully
  *       404:
- *         description: The module was not found
+ *         description: Module not found
  *       500:
  *         description: Some server error
  */

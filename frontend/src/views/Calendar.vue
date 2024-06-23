@@ -1,15 +1,18 @@
 <template>
-    <div class="calendar">
+    <v-row justify="center" align="center" style="height: 100vh;">
+      <v-col cols="12" sm="8" >
         <CalendarComponent />
-    </div>
-</template>
-
-<script>
-import CalendarComponent from '../components/CalendarComponent.vue';
-export default {
+      </v-col>
+    </v-row>
+  </template>
+  
+  <script>
+  import CalendarComponent from '../components/CalendarComponent.vue';
+  
+  export default {
     name: 'CalendarPage',
     components: {
-        CalendarComponent
+      CalendarComponent
     }
-}
-</script>
+  }
+  </script> 

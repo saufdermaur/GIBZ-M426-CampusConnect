@@ -1,17 +1,13 @@
 <template>
   <v-card>
     <v-layout>
-      <v-app-bar prominent class="app-bar-background">
+      <v-app-bar color="primary" class="app-bar-background" dark flat>
         <v-app-bar-nav-icon
           variant="text"
           @click.stop="drawer = !drawer"
         ></v-app-bar-nav-icon>
-
         <v-toolbar-title>Campus Connect</v-toolbar-title>
-
         <v-spacer></v-spacer>
-
-        <v-btn icon="mdi-bell" variant="text"></v-btn>
         <v-btn icon="mdi-account" variant="text" @click="goToLogin"></v-btn>
       </v-app-bar>
 
@@ -31,6 +27,16 @@
             prepend-icon="mdi-api"
             title="API Test"
             :to="{ name: 'API Test' }"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-book-multiple"
+            title="Modules"
+            :to="{ name: 'Modules' }"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-book-multiple"
+            title="Exams"
+            :to="{ name: 'Exams' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-book-multiple"
