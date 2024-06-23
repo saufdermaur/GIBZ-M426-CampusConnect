@@ -8,21 +8,22 @@ const defineModuleModel = require('../models/module.js');
 const router = express.Router();
 
 const sequelize = new Sequelize(
-  config.test.database,
-  config.test.username,
-  config.test.password,
+  config.dev.database,
+  config.dev.username,
+  config.dev.password,
   {
-    host: config.test.host,
-    dialect: config.test.dialect,
-    port: config.test.port,
+    host: config.dev.host,
+    dialect: config.dev.dialect,
+    port: config.dev.port,
   }
 );
 
 const Exam = defineExamModel(sequelize, DataTypes);
 const Module = defineModuleModel(sequelize, DataTypes);
 
-router.post('/create-exam', verifyToken, async (req, res) => {
-  const { moduleId, grade, weight, examTitle, description, examDate } = req.body;
+router.post("/create-exam", verifyToken, async (req, res) => {
+  const { moduleId, grade, weight, examTitle, description, examDate } =
+    req.body;
   try {
     const newExam = await Exam.create({
       ModuleID: moduleId,
@@ -32,13 +33,15 @@ router.post('/create-exam', verifyToken, async (req, res) => {
       Description: description,
       ExamDate: examDate,
     });
-    res.status(201).json({ message: 'Exam created successfully', exam: newExam });
+    res
+      .status(201)
+      .json({ message: "Exam created successfully", exam: newExam });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-router.get('/getAll', verifyToken, async (req, res) => {
+router.get("/getAll", verifyToken, async (req, res) => {
   try {
     const modules = await Module.findAll({ where: { AccountID: req.account.accountId } });
 
@@ -127,7 +130,7 @@ router.get('/:id', verifyToken, async (req, res) => {
   try {
     const exam = await Exam.findOne({ where: { ExamID: req.params.id } });
     if (!exam) {
-      return res.status(404).json({ message: 'Exam not found' });
+      return res.status(404).json({ message: "Exam not found" });
     }
     res.status(200).json(exam);
   } catch (error) {
@@ -135,14 +138,14 @@ router.get('/:id', verifyToken, async (req, res) => {
   }
 });
 
-router.put('/:id', verifyToken, async (req, res) => {
+router.put("/:id", verifyToken, async (req, res) => {
   const { grade, weight, examTitle, description, examDate } = req.body;
   try {
     const exam = await Exam.findOne({
-      where: { ExamID: req.params.id }
+      where: { ExamID: req.params.id },
     });
     if (!exam) {
-      return res.status(404).json({ message: 'Exam not found' });
+      return res.status(404).json({ message: "Exam not found" });
     }
     exam.Grade = grade || exam.Grade;
     exam.Weight = weight || exam.Weight;
@@ -150,22 +153,22 @@ router.put('/:id', verifyToken, async (req, res) => {
     exam.Description = description || exam.Description;
     exam.ExamDate = examDate || exam.ExamDate;
     await exam.save();
-    res.status(200).json({ message: 'Exam updated successfully', exam });
+    res.status(200).json({ message: "Exam updated successfully", exam });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-router.delete('/:id', verifyToken, async (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const exam = await Exam.findOne({
-      where: { ExamID: req.params.id }
+      where: { ExamID: req.params.id },
     });
     if (!exam) {
-      return res.status(404).json({ message: 'Exam not found' });
+      return res.status(404).json({ message: "Exam not found" });
     }
     await exam.destroy();
-    res.status(200).json({ message: 'Exam deleted successfully' });
+    res.status(200).json({ message: "Exam deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

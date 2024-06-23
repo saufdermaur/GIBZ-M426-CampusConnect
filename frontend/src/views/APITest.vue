@@ -1,17 +1,17 @@
 <template>
-    <div class="apiTest">
-        <BackendTest />
-    </div>
+  <div class="apiTest">
+    <BackendTest />
+  </div>
 </template>
 
 <script>
-import BackendTest from '../components/BackendTest.vue';
+import BackendTest from "../components/BackendTest.vue";
 export default {
-    name: 'APITestPage',
-    components: {
-        BackendTest
-}
-}
+  name: "APITestPage",
+  components: {
+    BackendTest,
+  },
+};
 </script>
 
 <style scoped>
@@ -20,7 +20,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #ffffff;
+  margin-top: 50px;
 }
 </style>

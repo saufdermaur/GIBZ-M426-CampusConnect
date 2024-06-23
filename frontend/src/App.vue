@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-layout>
-      <v-app-bar color="primary" prominent>
+      <v-app-bar prominent class="app-bar-background">
         <v-app-bar-nav-icon
           variant="text"
           @click.stop="drawer = !drawer"
@@ -19,6 +19,7 @@
         v-model="drawer"
         :location="$vuetify.display.mobile ? 'top' : undefined"
         permanent
+        class="navigation-background"
       >
         <v-list nav>
           <v-list-item
@@ -30,6 +31,11 @@
             prepend-icon="mdi-api"
             title="API Test"
             :to="{ name: 'API Test' }"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-book-multiple"
+            title="Subjects"
+            :to="{ name: 'Subjects' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-calendar"
@@ -44,7 +50,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-main style="height: 100vh">
+      <v-main class="pages-background">
         <div>
           <router-view></router-view>
         </div>
@@ -72,3 +78,21 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.navigation-background {
+  background-color: #5e5e5e;
+  color: #ffffff; /* Optional: Adjust text color for better contrast */
+}
+
+.pages-background {
+  background-color: #353535;
+  color: #ffffff; /* Optional: Adjust text color for better contrast */
+  height: 100vh;
+}
+
+.app-bar-background {
+  background-color: #2272a7;
+  color: #ffffff; /* Optional: Adjust text color for better contrast */
+}
+</style>
