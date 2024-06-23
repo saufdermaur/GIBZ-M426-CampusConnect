@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <ScheduleXCalendar :calendar-app="calendarApp" />
-  </div>
+      <ScheduleXCalendar :calendar-app="calendarApp" />
 </template>
 
 <script setup>
@@ -28,7 +26,7 @@ const eventsServicePlugin = createEventsServicePlugin();
 
 const calendarApp = createCalendar({
   plugins: [eventsServicePlugin],
-  locale: 'de-CH',
+  locale: 'de-DE',
   firstDayOfWeek: 1,
   dayBoundaries: {
     start: '07:00',
@@ -38,6 +36,7 @@ const calendarApp = createCalendar({
   views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
   defaultView: viewWeek.name,
   events: [],
+  isDark: true,
 });
 
 async function fetchCalendarEvents() {
@@ -64,6 +63,12 @@ onMounted(fetchCalendarEvents);
 </script>
 
 <style>
+.card {
+  background-size: cover;
+  background-position: center center;
+  min-height: 300px; 
+  position: relative;
+}
 .sx-vue-calendar-wrapper {
   width: 100%;
   height: 800px;

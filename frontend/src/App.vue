@@ -1,17 +1,13 @@
 <template>
   <v-card>
     <v-layout>
-      <v-app-bar prominent class="app-bar-background">
+      <v-app-bar color="primary" class="app-bar-background" dark flat>
         <v-app-bar-nav-icon
           variant="text"
           @click.stop="drawer = !drawer"
         ></v-app-bar-nav-icon>
-
         <v-toolbar-title>Campus Connect</v-toolbar-title>
-
         <v-spacer></v-spacer>
-
-        <v-btn icon="mdi-bell" variant="text"></v-btn>
         <v-btn icon="mdi-account" variant="text" @click="goToLogin"></v-btn>
       </v-app-bar>
 
@@ -28,14 +24,14 @@
             :to="{ name: 'Home' }"
           ></v-list-item>
           <v-list-item
-            prepend-icon="mdi-api"
-            title="API Test"
-            :to="{ name: 'API Test' }"
+            prepend-icon="mdi-book-multiple"
+            title="Modules"
+            :to="{ name: 'Modules' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-book-multiple"
-            title="Subjects"
-            :to="{ name: 'Subjects' }"
+            title="Exams"
+            :to="{ name: 'Exams' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-calendar"
@@ -88,7 +84,7 @@ export default {
 .pages-background {
   background-color: #353535;
   color: #ffffff; /* Optional: Adjust text color for better contrast */
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .app-bar-background {
