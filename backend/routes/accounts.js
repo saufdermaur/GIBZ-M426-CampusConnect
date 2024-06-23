@@ -11,7 +11,7 @@ const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const sequelize = new Sequelize(
-  config.dev.databdev,
+  config.dev.database,
   config.dev.username,
   config.dev.password,
   {
