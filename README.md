@@ -34,7 +34,7 @@ Die Umsetzung dieses Projekts wurde im Rahmen des Moduls "M426 - Software mit ag
 
 Wir mussten für unser Projekt drei Rollen definieren: Scrum Master, Product Owner und Developer. <br>
 
-**Scrum Master - Kyrylo-Tadei Krukenytskyi** :teacher: <br>
+**Scrum Master - Kyrylo-Tadei Krukenytskyi** :man_teacher: <br>
 Der Scrum Master sorgt dafür, dass das Scrum-Team die Prinzipien und Praktiken von Scrum versteht und anwendet. Er beseitigt Hindernisse, die den Fortschritt des Teams behindern, und fördert eine produktive und kollaborative Arbeitsumgebung. Ausserdem unterstützt er das Team dabei, kontinuierliche Verbesserungen durch regelmässige Retrospektiven zu erreichen.
 **Zugeteilte Aufgaben:** Design, Frontend-Entwicklung
 
@@ -80,7 +80,7 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ### _5.1 Logo_ :paintbrush:
 
-### _5.2 Mockup + Wireframe_ :framed_picture:
+### _5.2 Mockup + Wireframe_
 
 ## 4. Komponentendiagramm
 
