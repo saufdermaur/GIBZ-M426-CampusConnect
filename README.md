@@ -1,27 +1,45 @@
 # Campus Connect
 
+1. [Einleitung](#1-einleitung)
+   1. [Zielsetzung](#11-zielsetzung)
+   2. [Themenwahl](#12-themenwahl)
+   3. [Rollenverteilung](#13-rollenverteilung)
+2. [Datenbank](#2-datenbank)
+   1. [Datenbanktechnologie](#21-datenbanktechnologie)
+   2. [ERD](#22-erd)
+3. [Backend](#3-backend)
+   1. [Backendtechnologie](#31-backendtechnologie)
+4. [Frontend](#4-frontend)
+   1. [Frontendtechnologie](#41-frontendtechnologie)
+5. [Design](#5-design)
+   1. [Logo](#51-logo)
+   2. [Mockup + Wireframe](#52-mockup--wireframe)
+6. [Komponentendiagramm](#6-komponentendiagramm)
+   1. [Funktionen](#61-funktionen)
+7. [Projektplan](#7-projektplan)
+
 ## 1. Einleitung
 
 ### _1.1 Zielsetzung_
 
 Unser Ziel ist es, eine Schulnetz-Applikation zu erstellen, mit der Benutzer ihre eigenen Noten und Prüfungen einsehen und verwalten können. Die Applikation soll ausserdem einen Kalender enthalten, der einen Überblick über schulische Ereignisse bietet. Benutzer sollen sich registrieren und anschliessend einloggen können. Eine "About"-Seite, die alle Funktionalitäten im Überblick darstellt, soll ebenfalls realisiert werden. Designmässig streben wir ein minimalistisches Aussehen an; die Applikation soll einen Darkmode haben, und die Farben Weiss, Grau und Blau sollen dominieren. Ein eigenes Logo-Design ist ebenfalls geplant. Um die Applikation möglichst realitätsnah einsetzen zu können, planen wir, sie mithilfe von Docker zu deployen.
 
-### _1.2 Themenwahl_
+### _1.2 Themenwahl_ :bulb:
 
 Die Umsetzung dieses Projekts wurde im Rahmen des Moduls "M426 - Software mit agilen Methoden entwickeln" beschlossen. Nach anfänglicher Ideensuche über 2D-Games und E-Shops bis hin zu einer Social-Media-Applikation haben wir uns für eine Schulnetz-Applikation entschieden. Der Grund dafür war, dass wir die Umsetzung dieses Projekts als realistisch erachteten. Die Technologien, die wir für die Umsetzung benötigen (Vue, Swagger, ExpressJS, PostgreSQL), sind uns fast alle bekannt, und wir haben bereits einige positive Erfahrungen damit gemacht. Die Funktionalitäten einer Schulnetz-Applikation lassen sich gut untereinander aufteilen, sodass jeder an seinem eigenen Bereich arbeiten kann, ohne die anderen zu stören.
 
-### _1.3 Rollenverteilung_
+### _1.3 Rollenverteilung_ :people_holding_hands:
 
 Wir mussten für unser Projekt drei Rollen definieren: Scrum Master, Product Owner und Developer.
-**Scrum Master - Kyrylo-Tadei Krukenytskyi**
+**Scrum Master - Kyrylo-Tadei Krukenytskyi** :man_teacher:
 Der Scrum Master sorgt dafür, dass das Scrum-Team die Prinzipien und Praktiken von Scrum versteht und anwendet. Er beseitigt Hindernisse, die den Fortschritt des Teams behindern, und fördert eine produktive und kollaborative Arbeitsumgebung. Ausserdem unterstützt er das Team dabei, kontinuierliche Verbesserungen durch regelmässige Retrospektiven zu erreichen.
 **Zugeteilte Aufgaben:** Design, Frontend-Entwicklung
 
-**Product Owner - Kornel Duli**
+**Product Owner - Kornel Duli** :memo:
 Der Product Owner ist verantwortlich für die Maximierung des Wertes des Produkts und das Management des Product Backlogs. Er kommuniziert die Vision des Produkts und die Anforderungen an das Entwicklungsteam, um sicherzustellen, dass die richtigen Funktionen implementiert werden. Er priorisiert die Aufgaben im Backlog basierend auf dem geschäftlichen Nutzen und den Bedürfnissen der Stakeholder.
 **Zugeteilte Aufgaben:** Projektbeschreibung, Erstellen von User Stories, Verwaltung des Backlogs, Planung von Sprints, Frontend-Entwicklung
 
-**Developer - Sebastian Auf der Maur, Daniel Bernet**
+**Developer - Sebastian Auf der Maur, Daniel Bernet** :computer:
 Die Developer sind die Mitglieder des Scrum-Teams, die für die Umsetzung und Lieferung der Produktinkremente verantwortlich sind. Sie planen, entwickeln, testen und dokumentieren die Software und arbeiten eng zusammen, um die Sprint-Ziele zu erreichen. Zudem sind sie für die Qualität ihrer Arbeit und die Einhaltung der Definition of Done verantwortlich.
 **Zugeteilte Aufgaben:** Aufsetzung der Datenbank, Design, Backend- und Frontend-Entwicklung, Deployment
 
