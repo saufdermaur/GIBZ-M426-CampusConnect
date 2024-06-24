@@ -15,18 +15,15 @@ Die Umsetzung dieses Projekts wurde im Rahmen des Moduls "M426 - Software mit ag
 Wir mussten für unser Projekt drei Rollen definieren: Scrum Master, Product Owner und Developer.
 **Scrum Master - Kyrylo-Tadei Krukenytskyi**
 Der Scrum Master sorgt dafür, dass das Scrum-Team die Prinzipien und Praktiken von Scrum versteht und anwendet. Er beseitigt Hindernisse, die den Fortschritt des Teams behindern, und fördert eine produktive und kollaborative Arbeitsumgebung. Ausserdem unterstützt er das Team dabei, kontinuierliche Verbesserungen durch regelmässige Retrospektiven zu erreichen.
-
-Aufgaben: Design, Frontend-Entwicklung
+**Zugeteilte Aufgaben:** Design, Frontend-Entwicklung
 
 **Product Owner - Kornel Duli**
 Der Product Owner ist verantwortlich für die Maximierung des Wertes des Produkts und das Management des Product Backlogs. Er kommuniziert die Vision des Produkts und die Anforderungen an das Entwicklungsteam, um sicherzustellen, dass die richtigen Funktionen implementiert werden. Er priorisiert die Aufgaben im Backlog basierend auf dem geschäftlichen Nutzen und den Bedürfnissen der Stakeholder.
-
-Aufgaben: Projektbeschreibung, Erstellen von User Stories, Verwaltung des Backlogs, Planung von Sprints, Frontend-Entwicklung
+**Zugeteilte Aufgaben:** Projektbeschreibung, Erstellen von User Stories, Verwaltung des Backlogs, Planung von Sprints, Frontend-Entwicklung
 
 **Developer - Sebastian Auf der Maur, Daniel Bernet**
 Die Developer sind die Mitglieder des Scrum-Teams, die für die Umsetzung und Lieferung der Produktinkremente verantwortlich sind. Sie planen, entwickeln, testen und dokumentieren die Software und arbeiten eng zusammen, um die Sprint-Ziele zu erreichen. Zudem sind sie für die Qualität ihrer Arbeit und die Einhaltung der Definition of Done verantwortlich.
-
-Aufgaben: Aufsetzung der Datenbank, Design, Backend- und Frontend-Entwicklung, Deployment
+**Zugeteilte Aufgaben:** Aufsetzung der Datenbank, Design, Backend- und Frontend-Entwicklung, Deployment
 
 ## 2. Datenbank
 
@@ -46,6 +43,8 @@ Wir haben uns entschieden, als Datenbank PostgreSQL zu verwenden. Die wichtigste
 
 ### _2.2 ERD_
 
+![ERD Campus Connect](documentation_backend/ERDCampusConnect.png)
+
 Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gibt zwei Beziehungen: Erstens hat ein User eine 1-zu-N-Beziehung zu einem Module, und zweitens hat ein Module eine 1-zu-N-Beziehung zu einem Exam. Diese Struktur ermöglicht es, dass ein Benutzer mehrere Module und jedes Modul mehrere Prüfungen haben kann. Die Beziehungen und Attribute sind so gestaltet, dass die Datenintegrität und -konsistenz gewährleistet ist.
 
 ## 3. Backend
@@ -56,18 +55,24 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ### _4.1 Frontendtechnologie_
 
-### _3.2 Mockup + Wireframe_
+## 5. Design
 
-### _3.3 Funktionen_
+### _5.1 Logo_
 
-Die Funktionen sind unter 3.2 mit Wireframe schon grösstenteils beschrieben. Hier noch ein Überblick:
+### _5.2 Mockup + Wireframe_
+
+## 4. Komponentendiagramm
+
+![Komponentendiagramm](documentation_backend/Komponentendiagramm.png)
+
+### _5.1 Funktionen_
+
+Die Funktionen sind unter 5.2 mit Wireframe visuell dargestellt. Hier noch ein Überblick:
 
 **1. Login:**
 
-**2. Signup:** .
+**2. Signup:**
 
 **3. Logout:**
-
-## 4. Komponentendiagramm
 
 ## 5. Projektplan
