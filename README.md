@@ -30,9 +30,10 @@ Unser Ziel ist es, eine Schulnetz-Applikation zu erstellen, mit der Benutzer ihr
 
 Die Umsetzung dieses Projekts wurde im Rahmen des Moduls "M426 - Software mit agilen Methoden entwickeln" beschlossen. Nach anfänglicher Ideensuche über 2D-Games und E-Shops bis hin zu einer Social-Media-Applikation haben wir uns für eine Schulnetz-Applikation entschieden. Der Grund dafür war, dass wir die Umsetzung dieses Projekts als realistisch erachteten. Die Technologien, die wir für die Umsetzung benötigen (Vue, Swagger, ExpressJS, PostgreSQL), sind uns fast alle bekannt, und wir haben bereits einige positive Erfahrungen damit gemacht. Die Funktionalitäten einer Schulnetz-Applikation lassen sich gut untereinander aufteilen, sodass jeder an seinem eigenen Bereich arbeiten kann, ohne die anderen zu stören.
 
-### _1.3 Rollenverteilung_
+### _1.3 Rollenverteilung_ :busts_in_silhouette:
 
-Wir mussten für unser Projekt drei Rollen definieren: Scrum Master, Product Owner und Developer.
+Wir mussten für unser Projekt drei Rollen definieren: Scrum Master, Product Owner und Developer. <br>
+
 **Scrum Master - Kyrylo-Tadei Krukenytskyi** :teacher: <br>
 Der Scrum Master sorgt dafür, dass das Scrum-Team die Prinzipien und Praktiken von Scrum versteht und anwendet. Er beseitigt Hindernisse, die den Fortschritt des Teams behindern, und fördert eine produktive und kollaborative Arbeitsumgebung. Ausserdem unterstützt er das Team dabei, kontinuierliche Verbesserungen durch regelmässige Retrospektiven zu erreichen.
 **Zugeteilte Aufgaben:** Design, Frontend-Entwicklung
@@ -41,7 +42,7 @@ Der Scrum Master sorgt dafür, dass das Scrum-Team die Prinzipien und Praktiken 
 Der Product Owner ist verantwortlich für die Maximierung des Wertes des Produkts und das Management des Product Backlogs. Er kommuniziert die Vision des Produkts und die Anforderungen an das Entwicklungsteam, um sicherzustellen, dass die richtigen Funktionen implementiert werden. Er priorisiert die Aufgaben im Backlog basierend auf dem geschäftlichen Nutzen und den Bedürfnissen der Stakeholder.
 **Zugeteilte Aufgaben:** Projektbeschreibung, Erstellen von User Stories, Verwaltung des Backlogs, Planung von Sprints, Frontend-Entwicklung
 
-**Developer - Sebastian Auf der Maur, Daniel Bernet** :computer: <br>
+**Developer - Sebastian Auf der Maur & Daniel Bernet** :computer: <br>
 Die Developer sind die Mitglieder des Scrum-Teams, die für die Umsetzung und Lieferung der Produktinkremente verantwortlich sind. Sie planen, entwickeln, testen und dokumentieren die Software und arbeiten eng zusammen, um die Sprint-Ziele zu erreichen. Zudem sind sie für die Qualität ihrer Arbeit und die Einhaltung der Definition of Done verantwortlich.
 **Zugeteilte Aufgaben:** Aufsetzung der Datenbank, Design, Backend- und Frontend-Entwicklung, Deployment
 
@@ -77,9 +78,9 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ## 5. Design
 
-### _5.1 Logo_
+### _5.1 Logo_ :paintbrush:
 
-### _5.2 Mockup + Wireframe_
+### _5.2 Mockup + Wireframe_ :framed_picture:
 
 ## 4. Komponentendiagramm
 
