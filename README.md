@@ -7,18 +7,15 @@
    2. [Themenwahl](#12-themenwahl)
    3. [Rollenverteilung](#13-rollenverteilung)
 2. [Datenbank](#2-datenbank)
-   1. [Datenbanktechnologie](#21-datenbanktechnologie)
-   2. [ERD](#22-erd)
-3. [Backend](#3-backend)
-   1. [Backendtechnologie](#31-backendtechnologie)
-4. [Frontend](#4-frontend)
-   1. [Frontendtechnologie](#41-frontendtechnologie)
-5. [Design](#5-design)
-   1. [Logo](#51-logo)
-   2. [Mockup + Wireframe](#52-mockup--wireframe)
-6. [Komponentendiagramm](#6-komponentendiagramm)
-   1. [Funktionen](#7-funktionen)
-7. [Projektplan](#8-projektplan)
+   1. [ERD](#21-erd)
+3. [Mockup](#3-mockup)
+4. [Komponentendiagramm](#4-komponentendiagramm)
+   1. [Frontend](#41-frontend)
+   2. [Backend](#42-backend)
+   3. [Datenbank](#43-datenbank)
+   4. [Interaktion](#44-interaktion)
+5. [Funktionen](#5-funktionen)
+6. [Projektplan](#6-projektplan)
 
 ## 1. Einleitung
 
@@ -36,51 +33,25 @@ Wir mussten für unser Projekt drei Rollen definieren: Scrum Master, Product Own
 
 **Scrum Master - Kyrylo-Tadei Krukenytskyi** <br>
 Der Scrum Master sorgt dafür, dass das Scrum-Team die Prinzipien und Praktiken von Scrum versteht und anwendet. Er beseitigt Hindernisse, die den Fortschritt des Teams behindern, und fördert eine produktive und kollaborative Arbeitsumgebung. Ausserdem unterstützt er das Team dabei, kontinuierliche Verbesserungen durch regelmässige Retrospektiven zu erreichen. <br>
-**Zugeteilte Aufgaben:** Design, Frontend-Entwicklung
+**Hauptaufgaben:** Design, Frontend-Entwicklung
 
 **Product Owner - Kornel Duli** <br>
 Der Product Owner ist verantwortlich für die Maximierung des Wertes des Produkts und das Management des Product Backlogs. Er kommuniziert die Vision des Produkts und die Anforderungen an das Entwicklungsteam, um sicherzustellen, dass die richtigen Funktionen implementiert werden. Er priorisiert die Aufgaben im Backlog basierend auf dem geschäftlichen Nutzen und den Bedürfnissen der Stakeholder. <br>
-**Zugeteilte Aufgaben:** Projektbeschreibung, Erstellen von User Stories, Verwaltung des Backlogs, Planung von Sprints, Frontend-Entwicklung
+**Hauptaufgaben:** Projektbeschreibung, Erstellen von User Stories, Verwaltung des Backlogs, Planung von Sprints, Frontend-Entwicklung
 
 **Developer(s) - Sebastian Auf der Maur & Daniel Bernet** <br>
 Die Developer sind die Mitglieder des Scrum-Teams, die für die Umsetzung und Lieferung der Produktinkremente verantwortlich sind. Sie planen, entwickeln, testen und dokumentieren die Software und arbeiten eng zusammen, um die Sprint-Ziele zu erreichen. Zudem sind sie für die Qualität ihrer Arbeit und die Einhaltung der Definition of Done verantwortlich. <br>
-**Zugeteilte Aufgaben:** Aufsetzung der Datenbank, Design, Backend- und Frontend-Entwicklung, Deployment
+**Hauptaufgaben:** Aufsetzung der Datenbank, Design, Backend- und Frontend-Entwicklung, Deployment
 
 ## 2. Datenbank
 
-### _2.1 Datenbanktechnologie_
-
-Wir haben uns entschieden, als Datenbank PostgreSQL zu verwenden. Die wichtigsten Entscheidungskriterien dabei waren:
-
-**1. Benutzerverwaltung:** PostgreSQL bietet robuste Unterstützung für relationale Datenmodelle, die ideal sind, um Benutzerinformationen und deren Beziehungen zu anderen Daten zu speichern.
-
-**2. Komplexe Abfragen:** PostgreSQL kann komplexe Abfragen effizient ausführen und somit Daten schnell und zuverlässig darstellen. Ausserdem bietet PostgreSQL zahlreiche Indizierungsoptionen. Dies ist besonders nützlich, wenn man häufig auf große Datenmengen zugreifen muss.
-
-**3. ACID-Konformität:** PostgreSQL ist vollständig ACID-konform, was bedeutet, dass alle Datenbanktransaktionen atomar, konsistent, isoliert und dauerhaft sind.
-
-**4. Kosten:** PostgreSQL ist Open Source und kostenlos.
-
-**5. Erfahrung:** Wir haben bereits einige positive Erfahrungen mit PostgreSQL gesammelt und fühlen uns damit am meisten vertraut.
-
-### _2.2 ERD_
+### _2.1 ERD_
 
 ![ERD Campus Connect](documentation_backend/ERDCampusConnect.png)
 
 Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gibt zwei Beziehungen: Erstens hat ein User eine 1-zu-N-Beziehung zu einem Module, und zweitens hat ein Module eine 1-zu-N-Beziehung zu einem Exam. Diese Struktur ermöglicht es, dass ein Benutzer mehrere Module und jedes Modul mehrere Prüfungen haben kann. Die Beziehungen und Attribute sind so gestaltet, dass die Datenintegrität und -konsistenz gewährleistet ist.
 
-## 3. Backend
-
-### _3.1 Backendtechnologie_
-
-## 4. Frontend
-
-### _4.1 Frontendtechnologie_
-
-## 5. Design
-
-### _5.1 Logo_
-
-### _5.2 Mockup_
+## 3. Mockup
 
 ![Dashboard](documentation_frontend/mockup/dashboard.png)
 ![Modules](documentation_frontend/mockup/modules.png)
@@ -88,11 +59,11 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 ![Calendar](documentation_frontend/mockup/calendar.png)
 ![About](documentation_frontend/mockup/about.png)
 
-## 6. Komponentendiagramm
+## 4. Komponentendiagramm
 
 ![Komponentendiagramm](documentation_backend/Komponentendiagramm.png)
 
-### _6.1 Frontend_
+### _4.1 Frontend_
 
 **1. User:** Der Benutzer interagiert direkt mit der Benutzeroberfläche der Applikation.
 
@@ -106,7 +77,7 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 **6. app.vue:** Dies ist die Haupt-Vue-Komponente, die die gesamte Anwendung strukturiert und andere Komponenten und Views einbindet.
 
-### _6.2 Backend_
+### _4.2 Backend_
 
 **1. Swagger:** Swagger ist ein Tool, das zur Dokumentation und Testen der API verwendet wird. Es ermöglicht Entwicklern, die API-Endpunkte zu verstehen und zu nutzen.
 
@@ -116,18 +87,18 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 **4. models:** Modelle repräsentieren die Datenstrukturen und Geschäftslogik der Applikation und interagieren direkt mit der Datenbank.
 
-### _6.3 Datenbank_
+### _4.3 Datenbank_
 
 **1. PostgreSQL:** PostgreSQL ist die relationale Datenbank, die für die Speicherung und Verwaltung der Applikationsdaten verwendet wird. Sie interagiert mit den Modellen im Backend, um Daten zu speichern und abzurufen.
 
-### _6.4 Interaktion_
+### _4.4 Interaktion_
 
 1. Der Benutzer sendet Anfragen über die Benutzeroberfläche, die durch main.js und index.js geleitet und von den entsprechenden Komponenten und Views verarbeitet werden. <br>
 2. Anfragen vom Frontend gehen über Swagger zum Backend-Server (server.js), wo sie an die definierten Routen (routes) weitergeleitet werden. <br>
 3. Die Routen verwenden Modelle (models), um mit der PostgreSQL-Datenbank zu interagieren und die notwendigen Daten zu speichern oder abzurufen. <br>
 4. Die Ergebnisse dieser Datenbankoperationen werden zurück durch das Backend an das Frontend gesendet, wo sie in den entsprechenden Views angezeigt werden.
 
-## 7. Funktionen
+## 5. Funktionen
 
 **1. Login:**
 
@@ -139,4 +110,4 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 **5. Create exam:**
 
-## 8. Projektplan
+## 6. Projektplan
