@@ -92,6 +92,41 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ![Komponentendiagramm](documentation_backend/Komponentendiagramm.png)
 
+### _6.1 Frontend_
+
+**1. User:** Der Benutzer interagiert direkt mit der Benutzeroberfläche der Applikation.
+
+**2. main.js:** Dies ist der Einstiegspunkt für das Frontend der Applikation. Es lädt und initialisiert die Anwendung mit Vue und Vuetify.
+
+**3. index.js:** Hier werden verschiedene Routen und Konfigurationen für die Anwendung definiert. Es verbindet die verschiedenen Komponenten und Views.
+
+**4. components:** Diese beinhalten wiederverwendbare UI-Komponenten, die in verschiedenen Teilen der Applikation genutzt werden können.
+
+**5. views:** Views sind spezifische Seiten oder Ansichten der Applikation, die dem Benutzer angezeigt werden.
+
+**6. app.vue:** Dies ist die Haupt-Vue-Komponente, die die gesamte Anwendung strukturiert und andere Komponenten und Views einbindet.
+
+### _6.2 Backend_
+
+**1. Swagger:** Swagger ist ein Tool, das zur Dokumentation und Testen der API verwendet wird. Es ermöglicht Entwicklern, die API-Endpunkte zu verstehen und zu nutzen.
+
+**2. server.js:** Dies ist der Hauptserver für das Backend, implementiert mit ExpressJS. Es leitet Anfragen zu den entsprechenden Routen weiter.
+
+**3. routes:** Routen definieren die verschiedenen Endpunkte der API, die vom Frontend aufgerufen werden können.
+
+**4. models:** Modelle repräsentieren die Datenstrukturen und Geschäftslogik der Applikation und interagieren direkt mit der Datenbank.
+
+### _6.3 Datenbank_
+
+**1. PostgreSQL:** PostgreSQL ist die relationale Datenbank, die für die Speicherung und Verwaltung der Applikationsdaten verwendet wird. Sie interagiert mit den Modellen im Backend, um Daten zu speichern und abzurufen.
+
+### _6.4 Interaktion_
+
+1. Der Benutzer sendet Anfragen über die Benutzeroberfläche, die durch main.js und index.js geleitet und von den entsprechenden Komponenten und Views verarbeitet werden. <br>
+2. Anfragen vom Frontend gehen über Swagger zum Backend-Server (server.js), wo sie an die definierten Routen (routes) weitergeleitet werden. <br>
+3. Die Routen verwenden Modelle (models), um mit der PostgreSQL-Datenbank zu interagieren und die notwendigen Daten zu speichern oder abzurufen. <br>
+4. Die Ergebnisse dieser Datenbankoperationen werden zurück durch das Backend an das Frontend gesendet, wo sie in den entsprechenden Views angezeigt werden.
+
 ## 7. Funktionen
 
 **1. Login:**
