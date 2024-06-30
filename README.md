@@ -121,3 +121,5 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 ### _6.1 Sprints_
 
 ### _6.2 Stories und Tasks_
+
+![Stories und Tasks](image.png)
