@@ -16,6 +16,8 @@
    4. [Interaktion](#44-interaktion)
 5. [Funktionen](#5-funktionen)
 6. [Projektplan](#6-projektplan)
+   1. [Sprints](#61-sprints)
+   2. [Stories und Tasks](#62-stories-und-tasks)
 
 ## 1. Einleitung
 
@@ -115,3 +117,7 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 **9. Delete exam:** Bei Bedarf kann eine Prüfung gelöscht werden.
 
 ## 6. Projektplan
+
+### _6.1 Sprints_
+
+### _6.2 Stories und Tasks_
