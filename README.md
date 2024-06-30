@@ -53,11 +53,7 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ## 3. Mockup
 
-![Dashboard](documentation_frontend/mockup/dashboard.png)
-![Modules](documentation_frontend/mockup/modules.png)
-![Exams](documentation_frontend/mockup/exams.png)
-![Calendar](documentation_frontend/mockup/calendar.png)
-![About](documentation_frontend/mockup/about.png)
+![Mockup](documentation_frontend/mockup/mockup.png)
 
 ## 4. Komponentendiagramm
 
@@ -100,14 +96,22 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ## 5. Funktionen
 
-**1. Login:**
+**1. Login:** Diese Funktion ermöglicht es Benutzern, sich mit ihren Anmeldeinformationen in die Applikation einzuloggen. Benutzer geben ihre Zugangsdaten ein und erhalten Zugriff auf ihre personalisierten Inhalte.
 
-**2. Signup:**
+**2. Signup:** Diese Funktion erlaubt es neuen Benutzern, sich für die Applikation zu registrieren. Sie erstellen ein neues Konto, indem sie die erforderlichen Informationen wie Benutzername, und Passwort angeben.
 
-**3. Logout:**
+**3. Logout:** Die Logout-Funktion ermöglicht es Benutzern, sich sicher von ihrem Konto abzumelden. Dadurch wird sichergestellt, dass ihre Sitzungsdaten gelöscht und ihre Privatsphäre geschützt werden.
 
-**4. Create module:**
+**4. Create module:** Mit dieser Funktion können Benutzer neue Module hinzufügen. Sie geben den Namen und eine Beschreibung des Moduls ein und speichern diese Informationen. Die hinzugefügten Module werden in einer Liste angezeigt.
 
-**5. Create exam:**
+**5. Update module:** Bei Bedarf kann ein Modul aktualisiert werden.
+
+**6. Delete module:** Bei Bedarf kann ein Modul gelöscht werden.
+
+**7. Create exam:** Diese Funktion ermöglicht es Benutzern, neue Prüfungen zu erstellen. Benutzer geben Details wie Modulname, Beschreibung, Datum, Uhrzeit, Gewichtung und Note ein. Die erstellten Prüfungen werden in einer Liste angezeigt.
+
+**8. Update exam:** Bei Bedarf kann eine Prüfung aktualisiert werden.
+
+**9. Delete exam:** Bei Bedarf kann eine Prüfung gelöscht werden.
 
 ## 6. Projektplan
