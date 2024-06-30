@@ -34,15 +34,15 @@ Die Umsetzung dieses Projekts wurde im Rahmen des Moduls "M426 - Software mit ag
 
 Wir mussten für unser Projekt drei Rollen definieren: Scrum Master, Product Owner und Developer. <br>
 
-**Scrum Master - Kyrylo-Tadei Krukenytskyi**
+**Scrum Master - Kyrylo-Tadei Krukenytskyi** <br>
 Der Scrum Master sorgt dafür, dass das Scrum-Team die Prinzipien und Praktiken von Scrum versteht und anwendet. Er beseitigt Hindernisse, die den Fortschritt des Teams behindern, und fördert eine produktive und kollaborative Arbeitsumgebung. Ausserdem unterstützt er das Team dabei, kontinuierliche Verbesserungen durch regelmässige Retrospektiven zu erreichen. <br>
 **Zugeteilte Aufgaben:** Design, Frontend-Entwicklung
 
-**Product Owner - Kornel Duli**
+**Product Owner - Kornel Duli** <br>
 Der Product Owner ist verantwortlich für die Maximierung des Wertes des Produkts und das Management des Product Backlogs. Er kommuniziert die Vision des Produkts und die Anforderungen an das Entwicklungsteam, um sicherzustellen, dass die richtigen Funktionen implementiert werden. Er priorisiert die Aufgaben im Backlog basierend auf dem geschäftlichen Nutzen und den Bedürfnissen der Stakeholder. <br>
 **Zugeteilte Aufgaben:** Projektbeschreibung, Erstellen von User Stories, Verwaltung des Backlogs, Planung von Sprints, Frontend-Entwicklung
 
-**Developer - Sebastian Auf der Maur & Daniel Bernet**
+**Developer(s) - Sebastian Auf der Maur & Daniel Bernet** <br>
 Die Developer sind die Mitglieder des Scrum-Teams, die für die Umsetzung und Lieferung der Produktinkremente verantwortlich sind. Sie planen, entwickeln, testen und dokumentieren die Software und arbeiten eng zusammen, um die Sprint-Ziele zu erreichen. Zudem sind sie für die Qualität ihrer Arbeit und die Einhaltung der Definition of Done verantwortlich. <br>
 **Zugeteilte Aufgaben:** Aufsetzung der Datenbank, Design, Backend- und Frontend-Entwicklung, Deployment
 
@@ -82,11 +82,11 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ### _5.2 Mockup_
 
-![Dashboard](mockup/dashboard.png)
-![Modules](mockup/modules.png)
-![Exams](mockup/exams.png)
-![Calendar](mockup/calendar.png)
-![About](mockup/about.png)
+![Dashboard](documentation_frontend/mockup/dashboard.png)
+![Modules](documentation_frontend/mockup/modules.png)
+![Exams](documentation_frontend/mockup/exams.png)
+![Calendar](documentation_frontend/mockup/calendar.png)
+![About](documentation_frontend/mockup/about.png)
 
 ## 6. Komponentendiagramm
 
