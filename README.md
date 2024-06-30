@@ -82,11 +82,11 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ### _5.2 Mockup_
 
-![Dashboard](mockup\dashboard.png)
-![Modules](mockup\modules.png)
-![Exams](mockup\exams.png)
-![Calendar](mockup\calendar.png)
-![About](mockup\about.png)
+![Dashboard](mockup/dashboard.png)
+![Modules](mockup/modules.png)
+![Exams](mockup/exams.png)
+![Calendar](mockup/calendar.png)
+![About](mockup/about.png)
 
 ## 6. Komponentendiagramm
 
