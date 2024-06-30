@@ -116,4 +116,4 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 
 ## 6. Umsetzung
 
-![Umsetzung](image.png)
+![Umsetzung](documentation_frontend/umsetzung.png)
