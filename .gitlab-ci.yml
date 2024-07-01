@@ -3,8 +3,13 @@ stages:
   - test
   - deploy
 
+.build-image:
+  image: node:lts-alpine
+
 build-frontend-job:
   stage: build
+  extends:
+    - build-image
   script:
     - cd frontend
     - npm install
@@ -13,6 +18,8 @@ build-frontend-job:
 
 build-backend-job:
   stage: build
+  extends:
+    - build-image
   script:
     - cd backend
     - npm install
