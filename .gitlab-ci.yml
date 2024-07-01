@@ -13,6 +13,7 @@ test-job1:
   script:
     - echo "This job tests something"
     - echo "$TESTVARIABLE"
+  environment: production
 
 test-job2:
   stage: test
