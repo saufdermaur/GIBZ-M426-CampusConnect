@@ -12,7 +12,7 @@ test-job1:
   stage: test
   script:
     - echo "This job tests something"
-    - echo $testvariable
+    - echo "$testvariable"
 
 test-job2:
   stage: test
