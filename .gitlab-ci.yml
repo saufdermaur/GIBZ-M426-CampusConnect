@@ -3,28 +3,40 @@ stages:
   - test
   - deploy
 
-build-job:
+build-frontend-job:
   stage: build
   script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
-
-test-job1:
-  stage: test
-  script:
-    - echo "This job tests something"
-    - echo "$TESTVARIABLE"
+    - cd frontend
+    - npm install
+    - vue-cli-service build
   environment: production
 
-test-job2:
+build-backend-job:
+  stage: build
+  script:
+    - cd backend
+    - npm install
+    - npm build
+  environment: production
+
+test-job:
   stage: test
   script:
-    - echo "This job tests something, but takes more time than test-job1."
-    - echo "After the echo commands complete, it runs the sleep command for 20 seconds"
-    - echo "which simulates a test that runs 20 seconds longer than test-job1"
+    - echo "This job executes tests."
     - sleep 20
+    - echo "Success executing dummy tests!"
+  environment: production
 
-deploy-prod:
+deploy1-prod:
   stage: deploy
+  when: on_success
   script:
-    - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
+    - echo "I am pushing to dockerhub... or pretending to..."
+  environment: production
+
+deploy2-prod:
+  stage: deploy
+  when: on_failure
+  script:
+    - echo "Well now I'm not doing it."
   environment: production
