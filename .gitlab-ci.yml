@@ -8,8 +8,9 @@ build-frontend-job:
   image: node:lts-alpine
   script:
     - cd frontend
+    - npm install -g @vue/cli
     - npm install
-    - vue-cli-service build
+    - npm run build
   environment: production
 
 build-backend-job:
