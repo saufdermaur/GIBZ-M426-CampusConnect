@@ -20,27 +20,27 @@
         <v-list nav>
           <v-list-item
             prepend-icon="mdi-home"
-            title="Home"
+            title="Dashboard"
             :to="{ name: 'Home' }"
           ></v-list-item>
           <v-list-item
-            prepend-icon="mdi-book-multiple"
-            title="Modules"
+            prepend-icon="mdi-view-module"
+            title="Module"
             :to="{ name: 'Modules' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-book-multiple"
-            title="Exams"
+            title="Prüfungen"
             :to="{ name: 'Exams' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-calendar"
-            title="Calendar"
+            title="Kalender"
             :to="{ name: 'Calendar' }"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-information"
-            title="About"
+            title="Über uns"
             :to="{ name: 'About' }"
           ></v-list-item>
         </v-list>
