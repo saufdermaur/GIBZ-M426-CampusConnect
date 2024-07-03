@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -15,10 +16,12 @@
     "axios": "^1.6.8",
     "core-js": "^3.8.3",
     "cors": "^2.8.5",
+    "sinon": "^18.0.0",
+    "sinon-chai": "^3.7.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.13",
     "vue-session": "^1.0.0",
-    "vuetify": "^3.6.7"
+    "vuetify": "^3.6.11"
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",
@@ -27,7 +30,10 @@
     "@mdi/font": "^7.4.47",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-unit-mocha": "~5.0.0",
     "@vue/cli-service": "^5.0.8",
+    "@vue/test-utils": "^2.0.0-0",
+    "chai": "^4.2.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3"
   },
@@ -43,7 +49,18 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
