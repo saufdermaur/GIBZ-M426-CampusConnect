@@ -1,4 +1,5 @@
 stages:
+  - lint
   - build
   - test
   - deploy
@@ -8,6 +9,20 @@ variables:
 
 services:
   - name: docker:19.03.12-dind
+
+lint-job:
+  stage: lint
+  image: node:16-alpine
+  script:
+    - cd frontend
+    - npm install
+    - npm run lint
+    - cd ../backend
+    - npm install
+    - npm run lint
+  allow_failure: true
+  only:
+    - main 
 
 build-job:
   stage: build
