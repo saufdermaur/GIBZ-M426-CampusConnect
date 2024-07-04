@@ -62,7 +62,7 @@ build_frontend:
       - frontend/dist/
   only:
     - testBrach_Sebastian
-
+  
 # Deploying the application to DockerHub
 deploy:
   stage: deploy
@@ -70,7 +70,7 @@ deploy:
   services:
     - docker:dind
   before_script:
-    - echo 'snidlleit' | docker login --username 'snidlleit' --password-stdin <<< 'iP&K4$hJ!YPcGN6Gbp%uncNA%d#8qnCS'
+    - echo -n 'iP&K4$hJ!YPcGN6Gbp%uncNA%d#8qnCS' | docker login --username 'snidlleit' --password-stdin
   script:
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
