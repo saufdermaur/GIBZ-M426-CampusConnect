@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@preact/signals": "^1.2.3",
     "@schedule-x/calendar": "^1.42.1",
     "@schedule-x/events-service": "^1.42.2",
     "@schedule-x/theme-default": "^1.42.1",
