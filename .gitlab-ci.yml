@@ -1,8 +1,7 @@
 stages:
   - build
   - test
-  - docker-build
-  - docker-push
+  - deploy
 
 variables:
   DOCKERHUB_USERNAME: $DOCKERHUB_USERNAME
@@ -12,28 +11,20 @@ before_script:
   - echo "Logging into DockerHub..."
   - echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
 
-build-frontend-job:
+build-job:
   stage: build
   image: node:16-alpine
   script:
     - cd frontend
     - npm install
     - npm run build
-  artifacts:
-    paths:
-      - frontend/dist
-  only:
-    - main
-
-build-backend-job:
-  stage: build
-  image: node:16-alpine
-  script:
-    - cd backend
+    - cd ../backend
     - npm install
     - npm run build
   artifacts:
+    expire_in: 1 hour
     paths:
+      - frontend/dist
       - backend/build
   only:
     - main
@@ -43,46 +34,24 @@ test-job:
   image: node:16-alpine
   script:
     - echo "Executing unit tests for frontend and backend"
-    # add commands for tests hereeeeeee
+    # put run tests command here!!!!
     - echo "Tests passed successfully!"
   dependencies:
-    - build-frontend-job
-    - build-backend-job
+    - build-job
 
-build-docker-frontend:
-  stage: docker-build
+deploy-job:
+  stage: deploy
   image: docker:19.03.12
   services:
     - docker:19.03.12-dind
   script:
     - cd frontend
     - docker build -t $DOCKERHUB_USERNAME/campusconnect_frontend .
-  only:
-    - main
-  dependencies:
-    - test-job
-
-build-docker-backend:
-  stage: docker-build
-  image: docker:19.03.12
-  services:
-    - docker:19.03.12-dind
-  script:
-    - cd backend
-    - docker build -t $DOCKERHUB_USERNAME/campusconnect_backend .
-  only:
-    - main
-  dependencies:
-    - test-job
-
-push-docker-images:
-  stage: docker-push
-  image: docker:19.03.12
-  script:
     - docker push $DOCKERHUB_USERNAME/campusconnect_frontend
+    - cd ../backend
+    - docker build -t $DOCKERHUB_USERNAME/campusconnect_backend .
     - docker push $DOCKERHUB_USERNAME/campusconnect_backend
   only:
     - main
   dependencies:
-    - build-docker-frontend
-    - build-docker-backend
+    - test-job
