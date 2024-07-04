@@ -40,7 +40,7 @@ deploy-job:
   image: docker:19.03.12
   script:
     - echo "Logging into DockerHub..."
-    - echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
     - cd frontend
     - docker build -t $DOCKERHUB_USERNAME/campusconnect_frontend .
     - docker push $DOCKERHUB_USERNAME/campusconnect_frontend
