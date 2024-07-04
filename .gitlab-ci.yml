@@ -70,9 +70,7 @@ deploy:
   services:
     - docker:dind
   before_script:
-    - echo "DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME"
-    - echo "DOCKERHUB_PASSWORD is set"
-    - echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
+    - echo 'snidlleit' | docker login --username 'snidlleit' --password-stdin <<< 'iP&K4$hJ!YPcGN6Gbp%uncNA%d#8qnCS'
   script:
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
