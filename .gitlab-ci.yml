@@ -1,0 +1,83 @@
+stages:
+  - lint
+  - build
+  - deploy
+
+variables:
+  CI_REGISTRY: "registry.gitlab.com"
+  CI_REGISTRY_IMAGE: "registry.gitlab.com/m4269095015/campusconnect"
+
+# Linting the backend code
+lint_backend:
+  stage: lint
+  image: node:14
+  script:
+    - cd backend
+    - npm install
+    - npm run lint
+  only:
+    - master
+    - merge_requests
+
+# Linting the frontend code
+lint_frontend:
+  stage: lint
+  image: node:14
+  script:
+    - cd frontend
+    - npm install
+    - npm run lint
+  only:
+    - master
+    - merge_requests
+
+# Build the backend code
+build_backend:
+  stage: build
+  image: node:14
+  script:
+    - cd backend
+    - npm install
+    - echo "DEV_DB_HOST=${DEV_DB_HOST}" >> .env
+    - echo "DEV_DB_USER=${DEV_DB_USER}" >> .env
+    - echo "DEV_DB_PASS=${DEV_DB_PASS}" >> .env
+    - echo "DEV_DB_NAME=${DEV_DB_NAME}" >> .env
+    - echo "DEV_DB_PORT=${DEV_DB_PORT}" >> .env
+    - echo "JWT_SECRET=${JWT_SECRET}" >> .env
+    - npm run build
+  artifacts:
+    paths:
+      - backend/dist/
+  only:
+    - master
+
+# Build the frontend code
+build_frontend:
+  stage: build
+  image: node:14
+  script:
+    - cd frontend
+    - npm install
+    - echo "BASE_URL=${BASE_URL}" >> .env
+    - npm run build
+  artifacts:
+    paths:
+      - frontend/dist/
+  only:
+    - master
+
+# Deploying the application
+deploy:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:latest
+  only:
+    - master
+  environment:
+    name: production
