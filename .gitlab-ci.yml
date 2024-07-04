@@ -41,7 +41,7 @@ build_backend:
     - echo "DEV_DB_NAME=${DEV_DB_NAME}" >> .env
     - echo "DEV_DB_PORT=${DEV_DB_PORT}" >> .env
     - echo "JWT_SECRET=${JWT_SECRET}" >> .env
-    - npm run build
+    - node server.js
   artifacts:
     paths:
       - backend/dist/
@@ -56,7 +56,7 @@ build_frontend:
     - cd frontend
     - npm install
     - echo "BASE_URL=${BASE_URL}" >> .env
-    - npm run build
+    - npm run serve
   artifacts:
     paths:
       - frontend/dist/
