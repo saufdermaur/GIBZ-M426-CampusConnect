@@ -4,8 +4,6 @@ stages:
   - deploy
 
 variables:
-  DOCKERHUB_USERNAME: $DOCKERHUB_USERNAME
-  DOCKERHUB_PASSWORD: $DOCKERHUB_PASSWORD
   DOCKER_TLS_CERTDIR: "/certs"
 
 services:
