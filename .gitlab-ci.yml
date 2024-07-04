@@ -26,8 +26,7 @@ lint_frontend:
     - npm install
     - npm run lint
   only:
-    - master
-    - merge_requests
+    - testBrach_Sebastian
 
 # Build the backend code
 build_backend:
@@ -47,7 +46,7 @@ build_backend:
     paths:
       - backend/dist/
   only:
-    - master
+    - testBrach_Sebastian
 
 # Build the frontend code
 build_frontend:
@@ -62,7 +61,7 @@ build_frontend:
     paths:
       - frontend/dist/
   only:
-    - master
+    - testBrach_Sebastian
 
 # Deploying the application
 deploy:
@@ -76,6 +75,6 @@ deploy:
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
   only:
-    - master
+    - testBrach_Sebastian
   environment:
     name: production
