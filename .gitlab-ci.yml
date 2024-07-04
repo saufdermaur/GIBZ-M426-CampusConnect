@@ -6,6 +6,10 @@ stages:
 variables:
   DOCKERHUB_USERNAME: $DOCKERHUB_USERNAME
   DOCKERHUB_PASSWORD: $DOCKERHUB_PASSWORD
+  DOCKER_TLS_CERTDIR: "/certs"
+
+services:
+  - name: docker:19.03.12-dind
 
 before_script:
   - echo "Logging into DockerHub..."
@@ -34,7 +38,7 @@ test-job:
   image: node:16-alpine
   script:
     - echo "Executing unit tests for frontend and backend"
-    # put run tests command here!!!!
+    # insert command for tests here!!!
     - echo "Tests passed successfully!"
   dependencies:
     - build-job
@@ -42,8 +46,6 @@ test-job:
 deploy-job:
   stage: deploy
   image: docker:19.03.12
-  services:
-    - docker:19.03.12-dind
   script:
     - cd frontend
     - docker build -t $DOCKERHUB_USERNAME/campusconnect_frontend .
