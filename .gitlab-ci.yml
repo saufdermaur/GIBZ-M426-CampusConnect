@@ -14,8 +14,9 @@ lint_backend:
   script:
     - cd backend
     - npm install
+    - npm run lint
   only:
-    - testBrach_Sebastian
+    - testBranch_Sebastian
 
 # Linting the frontend code
 lint_frontend:
@@ -26,9 +27,9 @@ lint_frontend:
     - npm install
     - npm run lint
   only:
-    - testBrach_Sebastian
+    - testBranch_Sebastian
 
-# Build the backend code
+# Prepare the backend for deployment
 build_backend:
   stage: build
   image: node:14
@@ -41,12 +42,12 @@ build_backend:
     - echo "DEV_DB_NAME=${DEV_DB_NAME}" >> .env
     - echo "DEV_DB_PORT=${DEV_DB_PORT}" >> .env
     - echo "JWT_SECRET=${JWT_SECRET}" >> .env
-    - node server.js
+    - tar -czf backend.tar.gz *
   artifacts:
     paths:
-      - backend/dist/
+      - backend/backend.tar.gz
   only:
-    - testBrach_Sebastian
+    - testBranch_Sebastian
 
 # Build the frontend code
 build_frontend:
@@ -56,12 +57,12 @@ build_frontend:
     - cd frontend
     - npm install
     - echo "BASE_URL=${BASE_URL}" >> .env
-    - npm run serve
+    - npm run build
   artifacts:
     paths:
       - frontend/dist/
   only:
-    - testBrach_Sebastian
+    - testBranch_Sebastian
 
 # Deploying the application
 deploy:
@@ -75,6 +76,6 @@ deploy:
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
   only:
-    - testBrach_Sebastian
+    - testBranch_Sebastian
   environment:
     name: production
