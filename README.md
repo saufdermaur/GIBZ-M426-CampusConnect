@@ -117,3 +117,23 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 ## 6. Umsetzung
 
 ![Umsetzung](documentation_frontend/umsetzung.png)
+
+## 7. Product Increment
+
+## Abschluss Sprint 1:
+
+- Themenwahl
+- Datenbank wurde modelliert (Tabellen, Einträge und Relationen definiert) und Basisfunktionalitäten wurden definiert
+- Komponentendiagramm wurde erstellt
+- Tools wurden ausgewählt und Entwicklungsumgebungen eingerichtet (GitLab, Jira), sowie das Projekt initialisiert
+- Erster Entwurf für den Mockup wurde erstellt
+- Kommunikation zwischen API und Frontend wurde eingerichtet
+
+## Abschluss Sprint 2:
+
+- Neuorientierung: Datenbank wurde neu modelliert und Projektanforderungen angepasst
+- Kommunikation zwischen API und Datenbank wurde eingerichtet
+- Logo Design und Mockup Remake
+- Backend Basisfunktionalität wurde implementiert: Erstellen/ändern/löschen von Fächern, Login Funktionalität
+- Frontend Basisfunktionalität wurde implementiert: Login, Dashboard, Modules, Exams, Calendar, About
+- Projektbeschreibung wurde angepasst
