@@ -16,8 +16,7 @@ lint_backend:
     - npm install
     - npm run lint
   only:
-    - master
-    - merge_requests
+    - testBrach_Sebastian
 
 # Linting the frontend code
 lint_frontend:
