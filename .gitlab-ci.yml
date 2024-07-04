@@ -56,8 +56,7 @@ build_frontend:
     - cd frontend
     - npm install
     - echo "BASE_URL=${BASE_URL}" >> .env
-    - npm run build
-    - tar -czf frontend.tar.gz dist/
+    - tar -czf frontend.tar.gz *
   artifacts:
     paths:
       - frontend/frontend.tar.gz
@@ -73,14 +72,11 @@ deploy:
   before_script:
     - echo -n 'iP&K4$hJ!YPcGN6Gbp%uncNA%d#8qnCS' | docker login --username 'snidlleit' --password-stdin
   script:
-    - mkdir -p frontend/dist backend
-    - tar -xzf frontend/frontend.tar.gz -C frontend/dist
-    - tar -xzf backend/backend.tar.gz -C backend
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
   artifacts:
     paths:
-      - frontend/dist/
+      - frontend/
       - backend/
   only:
     - testBrach_Sebastian
