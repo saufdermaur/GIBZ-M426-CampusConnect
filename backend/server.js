@@ -1,27 +1,29 @@
 const express = require("express");
-//const swaggerUi = require("swagger-ui-express");
-//const swaggerSpec = require("./swaggerConfig");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swaggerConfig");
 const cors = require("cors");
 const { Sequelize } = require("sequelize");
 const config = require("./config/config.js");
 
 const app = express();
 
-//app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const PORT = 6790;
 
 const sequelize = new Sequelize(
-  config.dev.database,
-  config.dev.username,
-  config.dev.password,
+  config.database,
+  config.username,
+  config.password,
   {
-    host: config.dev.host,
-    dialect: config.dev.dialect,
-    port: config.dev.port,
+    host: config.host,
+    dialect: config.dialect,
+    port: config.port,
     logging: false,
   }
 );
+
+module.exports = sequelize;
 
 (async () => {
   try {

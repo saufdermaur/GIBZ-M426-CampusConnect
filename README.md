@@ -16,6 +16,8 @@
    4. [Interaktion](#44-interaktion)
 5. [Funktionen](#5-funktionen)
 6. [Umsetzung](#6-umsetzung)
+7. [Product Increment](#7-product-increment)
+8. [Resultat](#8-resultat)
 
 ## 1. Einleitung
 
@@ -137,3 +139,51 @@ Unser ERD hat Beziehungen zwischen drei Entitäten: User, Module und Exam. Es gi
 - Backend Basisfunktionalität wurde implementiert: Erstellen/ändern/löschen von Fächern, Login Funktionalität
 - Frontend Basisfunktionalität wurde implementiert: Login, Dashboard, Modules, Exams, Calendar, About
 - Projektbeschreibung wurde angepasst
+
+## 8. Resultat
+
+### Setup
+
+#### Database
+
+* Docker-Container: ```postgres```
+* Port: ```5433```
+* POSTGRES_PASSWORD: ```campus_pw```
+* POSTGRES_USER: ```campus_user```
+* POSTGRES_DB: ```campus_db```
+
+#### Backend
+
+Navigiere zum Backend-Verzeichnis:
+```cd backend```
+
+Erstelle und definiere die Datei .env mit folgendem Inhalt:
+
+```
+TEST_DB_HOST=<lokaleIP>
+TEST_DB_USER=campus_user
+TEST_DB_PASS=campus_pw
+TEST_DB_NAME=campus_db
+TEST_DB_PORT=<port der DB>
+JWT_SECRET=test123
+```
+
+Führe die Migrationen aus und starte den Server:
+```
+npx sequelize-cli db:migrate
+npm start
+```
+
+#### Frontend
+
+Navigiere zum Frontend-Verzeichnis:
+```cd frontend```
+
+Starte das Frontend:
+```npm run serve```
+
+### Overview
+
+![alt text](dashboard.png)
+![alt text](module.png)
+![alt text](pruefungen.png)

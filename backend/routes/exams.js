@@ -1,24 +1,12 @@
 const express = require('express');
 const { verifyToken } = require('../middleware/auth');
-const { Sequelize, DataTypes, Op } = require('sequelize');
-const config = require('../config/config.js');
+const { DataTypes, Op } = require('sequelize');
+const sequelize = require("../server.js");
 const defineExamModel = require('../models/exam.js');
 const defineModuleModel = require('../models/module.js');
 const jwt = require('jsonwebtoken');
 
 const router = express.Router();
-
-const sequelize = new Sequelize(
-  config.dev.database,
-  config.dev.username,
-  config.dev.password,
-  {
-    host: config.dev.host,
-    dialect: config.dev.dialect,
-    port: config.dev.port,
-  }
-);
-
 const Exam = defineExamModel(sequelize, DataTypes);
 const Module = defineModuleModel(sequelize, DataTypes);
 

@@ -3,23 +3,12 @@ const { verifyToken } = require("../middleware/auth");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const { Sequelize, DataTypes } = require("sequelize");
-const config = require("../config/config.js");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../server.js");
 const defineAccountModel = require("../models/account");
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
-
-const sequelize = new Sequelize(
-  config.dev.database,
-  config.dev.username,
-  config.dev.password,
-  {
-    host: config.dev.host,
-    dialect: config.dev.dialect,
-    port: config.dev.port,
-  }
-);
 
 const Account = defineAccountModel(sequelize, DataTypes);
 

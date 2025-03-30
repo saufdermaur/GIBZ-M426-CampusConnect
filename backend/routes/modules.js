@@ -1,22 +1,11 @@
 const express = require("express");
 const { verifyToken } = require("../middleware/auth");
-const { Sequelize, DataTypes } = require("sequelize");
-const config = require("../config/config.js");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../server.js");
 const defineModuleModel = require("../models/module.js");
 const jwt = require('jsonwebtoken');
 
 const router = express.Router();
-const sequelize = new Sequelize(
-  config.dev.database,
-  config.dev.username,
-  config.dev.password,
-  {
-    host: config.dev.host,
-    dialect: config.dev.dialect,
-    port: config.dev.port,
-  }
-);
-
 const Module = defineModuleModel(sequelize, DataTypes);
 
 // Middleware to decode JWT and set accountId in request
